@@ -12,6 +12,10 @@ class Physics {
         // Rectangle Collision Detection
         static bool RectColDetection(RECT colRectA, RECT colRectB);
 
+        static bool CircleCollisionResponse(D3DXVECTOR2 velocityA, D3DXVECTOR2 velocityB);
+
+        static void CircleCollisionResponse(D3DXVECTOR2* circle1Acceleration, D3DXVECTOR2 *circle2Acceleration);
+    
         D3DXVECTOR2 GetVelocity() const;
         float GetXVelocity() const;
         float GetYVelocity() const;
