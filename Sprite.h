@@ -10,8 +10,13 @@ private:
 	LPDIRECT3DTEXTURE9 texture = NULL;
 	int textureWidth;
 	int textureHeight;
+	int textureRow;
+	int textureCol;
 	int spriteWidth;
 	int spriteHeight;
+	int maxFrame;
+	
+	RECT animRect;
 	RECT colRect;
 
 	// Transformation
@@ -26,11 +31,15 @@ public:
 	void CreateTexture(LPCSTR texturePath);
 	void Draw(D3DCOLOR colour);
 
-	// Texture Height & Width
+	// Texture Height & Width, Row & Column
 	int GetTextureWidth();
 	void SetTextureWidth(int textureWidth);
 	int GetTextureHeight();
 	void SetTextureHeight(int textureHeight);
+	int GetTextureRow();
+	void SetTextureRow(int textureRow);
+	int GetTextureCol();
+	void SetTextureCol(int textureCol);
 
 	// Sprite Height & Width
 	int GetSpriteWidth();
@@ -38,6 +47,8 @@ public:
 	int GetSpriteHeight();
 	void SetSpriteHeight(int spriteHeight);
 
+	//Animation Rectangle
+	RECT GetAnimRect();
 	// Collision Rectangle
 	RECT GetColRect();
 

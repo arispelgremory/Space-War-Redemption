@@ -45,6 +45,35 @@ void Sprite::SetTextureHeight(int textureHeight)
     this->textureHeight = textureHeight;
 }
 
+int Sprite::GetTextureRow()
+{
+    return 0;
+}
+
+void Sprite::SetTextureRow(int textureRow)
+{
+}
+
+int GetTextureRow() 
+{
+    return textureRow;
+}
+
+void SetTextureRow(int textureRow)
+{
+    this->textureRow = textureRow;
+}
+
+int GetTextureCol()
+{
+    return textureCol;
+}
+
+void SetTextureCol(int textureCol)
+{
+    this->textureCol = textureCol;
+}
+
 int Sprite::GetSpriteWidth()
 {
     return spriteWidth;
@@ -63,6 +92,16 @@ int Sprite::GetSpriteHeight()
 void Sprite::SetSpriteHeight(int spriteHeight)
 {
     this->spriteHeight = spriteHeight;
+}
+
+RECT Sprite::GetAnimRect()
+{
+    return RECT();
+}
+
+RECT Sprite::GetColRect()
+{
+    return RECT();
 }
 
 Sprite::Sprite(int texWidth, int texHeight, int spriteWidth, int spriteHeight, D3DXVECTOR2 scaling, float rotation, D3DXVECTOR2 position)
