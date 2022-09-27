@@ -1,7 +1,6 @@
 #ifndef SPACEWARREDEMPTIONX_D3DDEVICEMANGER_H
 #define SPACEWARREDEMPTIONX_D3DDEVICEMANGER_H
-#include <d3dx9.h>
-#include "WindowManager.h"
+#include "GameConfiguration.h"
 
 class D3DDeviceManger {
     public:
@@ -17,7 +16,7 @@ class D3DDeviceManger {
         // End Sprite Brush
         void EndSpriteBrush();
         // Present the back buffer to the screen
-        void PresentBuffer();
+        void SwapScene();
         // Clean Up Direct3D9 Device
         void CleanUpMyD3D9Device();
 
@@ -26,7 +25,7 @@ class D3DDeviceManger {
         IDirect3DDevice9* GetD3D9Device();
 
     private:
-        IDirect3DDievice9* d3dDevice;
+        IDirect3DDevice9* d3dDevice;
         IDirect3DDevice9** d3dDeviceReference;
         LPD3DXSPRITE spriteBrush = NULL;
 };
