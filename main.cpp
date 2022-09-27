@@ -5,7 +5,7 @@
 #include "FrameTimer.h"
 
 WindowManager* windowManager = new WindowManager();
-D3DDeviceManger* deviceManager = new D3DDeviceManger();
+D3DDeviceManager* deviceManager = new D3DDeviceManager();
 InputManager* inputManager = new InputManager();
 
 FrameTimer* timer = new FrameTimer();

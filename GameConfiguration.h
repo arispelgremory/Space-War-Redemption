@@ -10,8 +10,9 @@
 using namespace std;
 
 // isn't this part bad XD cause it'll try to read all the header files in every cpp file
+// but it will be only compile once in the main function there, so it's ok
 #include "WindowManager.h"
-#include "D3DDeviceManger.h"
+#include "D3DDeviceManager.h"
 #include "InputManager.h"
 // #include "AudioManager.h"
 

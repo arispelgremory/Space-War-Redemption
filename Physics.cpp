@@ -15,6 +15,10 @@ bool Physics::RectColDetection(RECT RectA, RECT RectB) {
         RectA.right > RectB.left);
 }
 
+void Physics::CircleCollisionResponse(D3DXVECTOR2 *circle1,D3DXVECTOR2 *circle2) {
+    // Do something
+}
+
 Physics::Physics() {
     velocity = D3DXVECTOR2(0, 0);
     acceleration = D3DXVECTOR2(0, 0);
