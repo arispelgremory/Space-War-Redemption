@@ -1,8 +1,8 @@
 #include "GameConfiguration.h"
 
-D3DDeviceManger::D3D9DeviceManager(){}
+D3DDeviceManger::D3DDeviceManger(){}
 
-D3DDeviceManger::~D3D9DeviceManager(){}
+D3DDeviceManger::~D3DDeviceManger(){}
 
 void D3DDeviceManger::CreateD3D9Device(HWND g_hWnd){
     //	Define Direct3D 9.
@@ -51,7 +51,7 @@ void D3DDeviceManger::EndSpriteBrush() {
     spriteBrush->End();
 }
 
-void D3DDeviceManger::PresentBuffer() {
+void D3DDeviceManger::SwapScene() {
     //	End the scene
     d3dDevice->EndScene();
 
@@ -81,13 +81,5 @@ void D3DDeviceManger::CleanUpMyD3D9Device() {
     d3dDevice->Release();
     //	Reset pointer to NULL, a good practice.
     d3dDevice = NULL;
-}
-
-void D3DDeviceManger::SwapScene() {
-    //	End the scene
-    d3dDevice->EndScene();
-
-    //	Present the back buffer to screen
-    d3dDevice->Present(NULL, NULL, NULL, NULL);
 }
 

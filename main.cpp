@@ -2,6 +2,7 @@
 // #define -> Instruction to communicate with the compiler
 #define WIN32_LEAN_AND_MEAN // Only include the skinny(LEAN) and powerful(MEAN) part of Windows.h
 #include "GameConfiguration.h"
+#include "FrameTimer.h"
 
 WindowManager* windowManager = new WindowManager();
 D3DDeviceManger* deviceManager = new D3DDeviceManger();
@@ -39,7 +40,7 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
     deviceManager->CreateD3D9Device(windowManager->GetWindowHandle());
 
     // Create Input
-    Manager->Init(windowManager->GetWindowHandle());
+    inputManager->Init(windowManager->GetWindowHandle());
     timer->Init(GAMEFPS);
 
     while (windowManager->IsRunning()) {

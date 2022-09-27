@@ -1,5 +1,7 @@
+#pragma once
 #include "GameConfiguration.h"
 #include "InputManager.h"
+
 
 InputManager::InputManager() {
 }
@@ -9,11 +11,9 @@ InputManager::~InputManager() {
 }
 
 void InputManager::Init(HWND g_hWnd) {
-    HRESULT hr;
-
-    hr = InputManager8Create(GetModuleHandle(NULL), 0x0800, IID_IInputManager8, (void**)&dInput, NULL);
+    HRESULT hr = DirectInput8Create(GetModuleHandle(NULL), 0x0800, IID_IDirectInput8, (void**)&dInput, NULL);
     if(FAILED(hr)) {
-        cout << "Create Direct Input Failed" << endl;
+        cout << "Create Direct Input Failed" << std::endl;
     }
 
     hr = dInput->CreateDevice(GUID_SysKeyboard, &dInputKeyboardDevice, NULL);
@@ -55,13 +55,13 @@ void InputManager::GetInput() {
     dInputKeyboardDevice->Acquire();
     dInputMouseDevice->Acquire();
 
-    if (KEYDOWN(diKeys, DIK_DOWN) {
+    if (KEYDOWN(diKeys, DIK_DOWN)) {
         downButtonPressed = true;
     }
     if (KEYDOWN(diKeys, DIK_UP)){
         upButtonPressed = true;
     }
-    if (KEYDOWN(diKeys, DIK_RETURN) {
+    if (KEYDOWN(diKeys, DIK_RETURN)) {
         enterButtonPressed = true;
     }
 
@@ -87,12 +87,20 @@ void InputManager::GetInput() {
         backSpaceButtonPressed = true;
     }
 
-    if (KEYDOWN(diKeys, DIK_DOWN))
+    if (KEYDOWN(diKeys, DIK_DOWN)) {
         downButtonPressed = true;
+    }
+        
 
-    if (KEYDOWN(diKeys, DIK_A)) aButtonPressed = true;
+    if (KEYDOWN(diKeys, DIK_A)) {
+        aButtonPressed = true;
+    }
 
-    if (KEYDOWN(diKeys, DIK_D)) dButtonPressed = true;
+
+    if (KEYDOWN(diKeys, DIK_D)){
+        dButtonPressed = true;
+    }
+
 
 
 }

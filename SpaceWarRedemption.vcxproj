@@ -132,13 +132,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="D3DevivceManger.cpp" />
+    <ClCompile Include="D3DDeviceManger.cpp" />
+    <ClCompile Include="FrameTimer.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D3DevivceManger.h" />
+    <ClInclude Include="D3DDeviceManger.h" />
+    <ClInclude Include="FrameTimer.h" />
     <ClInclude Include="GameConfiguration.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="WindowManager.h" />
