@@ -11,7 +11,7 @@ Text* Text::GetInstance()
 void Text::InitText()
 {
 	LPD3DXFONT font;
-	hr = D3DXCreateFont(d3dDevice, fontHeight, 0, fontWeight, 1, false,
+	hr = D3DXCreateFont(D3DDEVICE->GetD3D9Device(), fontHeight, 0, fontWeight, 1, false,
 		DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
 		DEFAULT_PITCH | FF_DONTCARE, "Arial", &font);
 
@@ -92,7 +92,7 @@ void Text::SetScaling(D3DXVECTOR2 scaling)
 
 D3DXVECTOR2 Text::GetSpriteCenter()
 {
-	return spriteCeenter;
+	return spriteCenter;
 }
 
 void Text::SetSpriteCenter(D3DXVECTOR2 spriteCenter)

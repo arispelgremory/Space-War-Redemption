@@ -11,7 +11,7 @@ Line* Line::GetInstance()
 void Line::InitLine()
 {
     LPD3DXLINE line;
-    hr = D3DXCreateLine(D3DDEVICE->GetD3DDevice(), &line);
+    hr = D3DXCreateLine(D3DDEVICE->GetD3D9Device(), &line);
     if (FAILED(hr))
     {
         cout << "Create line failed" << endl;

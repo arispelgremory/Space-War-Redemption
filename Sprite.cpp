@@ -10,7 +10,7 @@ Sprite* Sprite::GetInstance()
 void Sprite::CreateTexture(LPCSTR texturePath)
 {
     HRESULT hr;
-    hr = D3DXCreateTextureFromFile(D3DDEVICE->GetD3DDevice(), texturePath, &texture);
+    hr = D3DXCreateTextureFromFile(D3DDEVICE->GetD3D9Device(), texturePath, &texture);
     if (FAILED(hr)) {
         cout << "Create Texture failed!" << endl;
         return;
