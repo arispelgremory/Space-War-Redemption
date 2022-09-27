@@ -4,6 +4,11 @@
 #include <Windows.h>
 #include <d3d9.h>
 
+#include "GameConfiguration.h"
+#include "WindowManager.h"
+
+WindowManager* windowManager = new WindowManager();
+
 //	use WinMain if you don't want the console
 int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
 	/*
@@ -13,7 +18,10 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 	   int nShowCmd - window mode (fullscreen, borderless)
 	*/
 
-	CreateMyWindow();
+	// Create Window
+	windowManager->CreateGameWindow();
+
+
 	CreateMyDX();
 	CreateMyDInput();
 
