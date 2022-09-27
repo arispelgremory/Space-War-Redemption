@@ -1,10 +1,11 @@
 #pragma once
 #include "GameObject.h"
 
-class Spaceship
+class Spaceship: public Sprite
 {
 private:
 
 public:
-	void InitSpaceship();
+	void InitSpaceship(int xPos, int yPos);
+
 };
