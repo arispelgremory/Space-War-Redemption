@@ -1,11 +1,14 @@
 #pragma once
 #include "GameObject.h"
 
-class Spaceship: public Sprite
+class Spaceship : public GameObject
 {
-private:
-
+	Sprite* spaceship = NULL;
+	static Spaceship* _instance;
 public:
-	void InitSpaceship(int xPos, int yPos);
-
+	Spaceship();
+	~Spaceship();
+	static Spaceship* GetInstance();
+	void InitSpaceship(D3DXVECTOR2 position);
+	void UpdatePosition();
 };

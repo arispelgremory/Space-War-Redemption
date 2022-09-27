@@ -1,11 +1,41 @@
 #include "Spaceship.h"
 
-void Spaceship::InitSpaceship() {
 
-}
-
-void Spaceship::InitSpaceship(int xPos, int yPos)
+Spaceship::Spaceship()
 {
 
 }
 
+
+Spaceship::~Spaceship()
+{
+}
+
+Spaceship* Spaceship::_instance = 0;
+Spaceship* Spaceship::GetInstance()
+{
+	if (_instance == 0)
+		_instance = new Spaceship();
+
+	return _instance;
+}
+
+void Spaceship::InitSpaceship(D3DXVECTOR2 position)
+{
+	spaceship->SetTextureWidth(SPACESHIP_DIMENSION);
+	spaceship->SetTextureHeight(SPACESHIP_DIMENSION);
+	spaceship->SetTextureCol(2);
+	spaceship->SetTextureRow(2);
+	spaceship->SetSpriteWidth(spaceship->GetTextureWidth() / spaceship->GetTextureRow());
+	spaceship->SetSpriteHeight(spaceship->GetTextureHeight() / spaceship->GetTextureCol());
+
+	spaceship->CreateTexture(SPACESHIP_FILEPATH);
+
+	spaceship->SetScaling(D3DXVECTOR2(1.0f, 1.0f));
+	spaceship->SetRotation(0.0f);
+	spaceship->SetPosition(position);
+}
+
+void Spaceship::UpdatePosition()
+{
+}
