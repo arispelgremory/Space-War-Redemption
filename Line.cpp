@@ -8,10 +8,10 @@ Line* Line::GetInstance()
     return _instance;
 }
 
-void Line::InitLine()
+void Line::InitLine(IDirect3DDevice9* d3d9Device)
 {
     LPD3DXLINE line;
-    hr = D3DXCreateLine(D3DDEVICE->GetD3D9Device(), &line);
+    hr = D3DXCreateLine(d3d9Device, &line);
     if (FAILED(hr))
     {
         cout << "Create line failed" << endl;

@@ -20,7 +20,7 @@ Spaceship* Spaceship::GetInstance()
 	return _instance;
 }
 
-void Spaceship::InitSpaceship(D3DXVECTOR2 position)
+void Spaceship::InitSpaceship(IDirect3DDevice9* d3d9Device, D3DXVECTOR2 position)
 {
 	spaceship->SetTextureWidth(SPACESHIP_DIMENSION);
 	spaceship->SetTextureHeight(SPACESHIP_DIMENSION);
@@ -29,7 +29,7 @@ void Spaceship::InitSpaceship(D3DXVECTOR2 position)
 	spaceship->SetSpriteWidth(spaceship->GetTextureWidth() / spaceship->GetTextureRow());
 	spaceship->SetSpriteHeight(spaceship->GetTextureHeight() / spaceship->GetTextureCol());
 
-	spaceship->CreateTexture(SPACESHIP_FILEPATH);
+	spaceship->CreateTexture(d3d9Device, SPACESHIP_FILEPATH);
 
 	spaceship->SetScaling(D3DXVECTOR2(1.0f, 1.0f));
 	spaceship->SetRotation(0.0f);

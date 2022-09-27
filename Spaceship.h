@@ -9,6 +9,6 @@ public:
 	Spaceship();
 	~Spaceship();
 	static Spaceship* GetInstance();
-	void InitSpaceship(D3DXVECTOR2 position);
+	void InitSpaceship(IDirect3DDevice9* d3d9Device, D3DXVECTOR2 position);
 	void UpdatePosition();
 };

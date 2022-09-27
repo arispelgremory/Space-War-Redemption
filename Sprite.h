@@ -28,8 +28,8 @@ private:
 
 public:
 	static Sprite* GetInstance();
-	void CreateTexture(LPCSTR texturePath);
-	void Draw(D3DCOLOR colour);
+	void CreateTexture(IDirect3DDevice9* d3d9Device, LPCSTR texturePath);
+	void Draw(LPD3DXSPRITE spriteBrush, D3DCOLOR colour);
 
 	// Texture Height & Width, Row & Column
 	int GetTextureWidth();

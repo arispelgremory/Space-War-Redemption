@@ -20,7 +20,7 @@ private:
 public:
 	static Text* GetInstance();
 
-	void InitText();
+	void InitText(IDirect3DDevice9* d3d9Device);
 
 	void SetFontHeight(INT fontHeight);
 	void SetFontWeight(UINT fontWeight);
@@ -35,7 +35,7 @@ public:
 	D3DXVECTOR2 GetPosition();
 	void SetPosition(D3DXVECTOR2 position);
 
-	void DrawOutText(LPCTSTR text, int count, UINT format, D3DCOLOR colour);
+	void DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format, D3DCOLOR colour);
 
 	void CleanUpText();
 

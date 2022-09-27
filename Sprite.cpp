@@ -7,21 +7,21 @@ Sprite* Sprite::GetInstance()
     return _instance;
 }
 
-void Sprite::CreateTexture(LPCSTR texturePath)
+void Sprite::CreateTexture(IDirect3DDevice9* d3d9Device,LPCSTR texturePath)
 {
     HRESULT hr;
-    hr = D3DXCreateTextureFromFile(D3DDEVICE->GetD3D9Device(), texturePath, &texture);
+    hr = D3DXCreateTextureFromFile(d3d9Device, texturePath, &texture);
     if (FAILED(hr)) {
         cout << "Create Texture failed!" << endl;
         return;
     }
 }
 
-void Sprite::Draw(D3DCOLOR colour)
+void Sprite::Draw(LPD3DXSPRITE spriteBrush, D3DCOLOR colour)
 {
     D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, rotation, &position);
-    D3DDEVICE->GetSpriteBrush()->SetTransform(mat);
-    D3DDEVICE->GetSpriteBrush()->Draw(this->texture, &colRect, NULL, NULL, colour);
+    spriteBrush->SetTransform(mat);
+    spriteBrush->Draw(this->texture, &colRect, NULL, NULL, colour);
 
 }
 

@@ -28,14 +28,14 @@ using namespace std;
 #define KEYDOWN(name, key) (name[key] & 0x80)
 #define MOUSEBUTTONDOWN(name, key) (name.rgbButtons[key] & 0x80)
 
-// Get Instance
-#define WINDOW								WindowManager::GetInstance()
-#define D3DDEVICE							D3DDeviceManager::GetInstance()
-#define FRAMETIMER							FrameTimer::GetInstance()
-#define SPRITE								Sprite::GetInstance()
-#define LINE								Line::GetInstance()
-#define TEXT								Text::GetInstance()
-#define USERINPUT							InputManager::GetInstance()
+//// Get Instance
+//#define WINDOW								WindowManager::GetInstance()
+//#define D3DDEVICE							D3DDeviceManager::GetInstance()
+//#define FRAMETIMER							FrameTimer::GetInstance()
+//#define SPRITE								Sprite::GetInstance()
+//#define LINE								Line::GetInstance()
+//#define TEXT								Text::GetInstance()
+//#define USERINPUT							InputManager::GetInstance()
 
 // Spaceship Info
 #define SPACESHIP_FILEPATH					"Assets/Images/spaceship.png"
