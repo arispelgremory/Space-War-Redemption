@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;$(DXSDK_DIR)include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;$(DXSDK_DIR)lib\x86;$(LibraryPath)$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <LibraryPath>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;$(DXSDK_DIR)lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -136,6 +136,7 @@
     <ClCompile Include="FrameTimer.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="FrameTimer.h" />
     <ClInclude Include="GameConfiguration.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

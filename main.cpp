@@ -35,7 +35,7 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     // Create Window
     windowManager->CreateGameWindow();
-
+    
     // Create D3D Devices
     deviceManager->CreateD3D9Device(windowManager->GetWindowHandle());
 
