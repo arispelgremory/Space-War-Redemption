@@ -24,23 +24,27 @@ class InputManager {
         bool GetUpButtonPressed() const;
         bool GetDownButtonPressed() const;
         bool GetEnterButtonPressed() const;
-        bool GetLeftKeyPressed() const;
-        bool GetRightKeyPressed() const;
+        bool GetLeftButtonPressed() const;
+        bool GetRightButtonPressed() const;
         bool GetLeftMouseClicked() const;
         bool GetBackSpaceButtonPressed() const;
-        bool GetMouseMoved() const;
+        bool GetMouseMoved() const; //?
+        bool GetWButtonPressed() const;
         bool GetAButtonPressed() const;
+        bool GetSButtonPressed() const;
         bool GetDButtonPressed() const;
 
         // Reset Input (Setters)
         void ResetUpButton();
         void ResetDownButton();
         void ResetEnterButton();
-        void ResetLeftKey();
-        void ResetRightKey();
+        void ResetLeftButton();
+        void ResetRightButton();
         void ResetLeftMouseButton();
         void ResetBackSpaceButton();
+        void ResetWButton();
         void ResetAButton();
+        void ResetSButton();
         void ResetDButton();
 
 
@@ -63,14 +67,14 @@ class InputManager {
         // Player 1
         bool upButtonPressed;
         bool downButtonPressed;
-        bool leftKeyPressed;
-        bool rightKeyPressed;
+        bool leftButtonPressed;
+        bool rightButtonPressed;
 
         // Player 2
         bool wButtonPressed;
         bool aButtonPressed;
-        bool dButtonPressed;
         bool sButtonPressed;
+        bool dButtonPressed;
 
         bool enterButtonPressed;
         bool leftMouseClicked;
