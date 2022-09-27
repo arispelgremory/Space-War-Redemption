@@ -29,6 +29,14 @@ LRESULT WindowManager::WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, L
 	return 0;
 }
 
+WindowManager* WindowManager::_instance = 0;
+WindowManager* WindowManager::GetInstance()
+{
+	if (_instance == 0)
+		_instance = new WindowManager;
+	return _instance;
+}
+
 void WindowManager::CreateGameWindow() {
 	//	set all members in wndclass to 0.
 	ZeroMemory(&wndClass, sizeof(wndClass));
@@ -46,7 +54,7 @@ void WindowManager::CreateGameWindow() {
 
 	//	you are to refer to msdn for each of the parameters details.
 	//  create instance of window
-	g_hWnd = CreateWindowEx(0, wndClass.lpszClassName, "Space War Redemption", WS_OVERLAPPEDWINDOW, 0, 0, WindowWidth, WindowHeight, NULL, NULL, GetModuleHandle(NULL), NULL);
+	g_hWnd = CreateWindowEx(0, wndClass.lpszClassName, "Space War Redemption", WS_OVERLAPPEDWINDOW, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, NULL, NULL, GetModuleHandle(NULL), NULL);
 	ShowWindow(g_hWnd, 1);
 }
 

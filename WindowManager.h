@@ -11,6 +11,7 @@ class WindowManager {
 		WindowManager();
 		~WindowManager();
 
+		static WindowManager* GetInstance();
 		static LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 		void CreateGameWindow();
 		bool IsRunning();
@@ -19,6 +20,7 @@ class WindowManager {
 		HWND GetWindowHandle();
 
 	private:
+		static WindowManager* _instance;
 		HWND g_hWnd = NULL;
 		WNDCLASS wndClass;
 

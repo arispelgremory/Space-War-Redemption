@@ -9,6 +9,13 @@ InputManager::InputManager() {
 InputManager::~InputManager() {
 
 }
+InputManager* InputManager::_instance = 0;
+InputManager* InputManager::GetInstance()
+{
+    if (_instance == 0)
+        _instance = new InputManager();
+    return _instance;
+}
 
 void InputManager::Init(HWND g_hWnd) {
     HRESULT hr = DirectInput8Create(GetModuleHandle(NULL), 0x0800, IID_IDirectInput8, (void**)&dInput, NULL);

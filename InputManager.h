@@ -2,12 +2,13 @@
 #define SPACEWARREDEMPTIONX_DIRECTINPUT_H
 #include "GameConfiguration.h"
 
-
+// make this more reusable???
 class InputManager {
     public:
         InputManager();
         ~InputManager();
 
+        static InputManager* GetInstance();
         // Initialize
         void Init(HWND g_hWnd);
 
@@ -45,6 +46,7 @@ class InputManager {
 
 
     private:
+        static InputManager* _instance;
         // Direct Input
         LPDIRECTINPUT8 dInput;
         // Direct Input Keyboard Device

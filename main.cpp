@@ -4,24 +4,26 @@
 #include "GameConfiguration.h"
 #include "FrameTimer.h"
 
-WindowManager* windowManager = new WindowManager();
-D3DDeviceManger* deviceManager = new D3DDeviceManger();
-InputManager* inputManager = new InputManager();
+//WindowManager* windowManager = new WindowManager();
+//D3DDeviceManger* deviceManager = new D3DDeviceManger();
+//InputManager* inputManager = new InputManager();
+//
+//FrameTimer* timer = new FrameTimer();
 
-FrameTimer* timer = new FrameTimer();
-
-void Update(int FPS) {
+void Update(int FPS) 
+{
 
 }
 
-void Render() {
-    deviceManager->BeginRender();
-    deviceManager->BeginSpriteBrush();
+void Render() 
+{
+    D3DDEVICE->BeginRender();
+    D3DDEVICE->BeginSpriteBrush();
 
     // Draw Something here
 
-    deviceManager->EndSpriteBrush();
-    deviceManager->SwapScene();
+    D3DDEVICE->EndSpriteBrush();
+    D3DDEVICE->SwapScene();
 }
 
 //	use WinMain if you don't want the console
@@ -34,24 +36,24 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
     */
 
     // Create Window
-    windowManager->CreateGameWindow();
+    WINDOW->CreateGameWindow();
 
     // Create D3D Devices
-    deviceManager->CreateD3D9Device(windowManager->GetWindowHandle());
+    D3DDEVICE->CreateD3D9Device(WINDOW->GetWindowHandle());
 
     // Create Input
-    inputManager->Init(windowManager->GetWindowHandle());
-    timer->Init(GAMEFPS);
+    USERINPUT->Init(WINDOW->GetWindowHandle());
+    FRAMETIMER->Init(GAMEFPS);
 
-    while (windowManager->IsRunning()) {
-        inputManager->GetInput();
-        Update(timer->framesToUpdate());
+    while (WINDOW->IsRunning()) {
+        USERINPUT->GetInput();
+        Update(FRAMETIMER->framesToUpdate());
         Render();
     }
     // CleanupMyLevel();
-    inputManager->CleanUpInput();
-    deviceManager->CleanUpMyD3D9Device();
-    windowManager->CleanUpWindow();
+    USERINPUT->CleanUpInput();
+    D3DDEVICE->CleanUpMyD3D9Device();
+    WINDOW->CleanUpWindow();
 
 	return 0;
 }
