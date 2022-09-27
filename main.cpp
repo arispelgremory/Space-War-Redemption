@@ -10,12 +10,12 @@
 //
 //FrameTimer* timer = new FrameTimer();
 
-void Update(int FPS) 
+void Update(int FPS)
 {
 
 }
 
-void Render() 
+void Render()
 {
     D3DDEVICE->BeginRender();
     D3DDEVICE->BeginSpriteBrush();
@@ -55,6 +55,6 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
     D3DDEVICE->CleanUpMyD3D9Device();
     WINDOW->CleanUpWindow();
 
-	return 0;
+    return 0;
 }
 

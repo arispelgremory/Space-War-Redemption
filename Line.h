@@ -1,23 +1,21 @@
 #pragma once
 #include <d3dx9.h>
-#include "GameConfiguration.h"
-#include "D3DDeviceManager.h"
+#include "AppConfiguration.h"
+#include "DirectXManager.h"
 
 class Line
 {
+private:
+	static Line* _instance;
+	LPD3DXSPRITE lineBrush = NULL;
+	LPD3DXLINE line = NULL;
 public:
 	static Line* GetInstance();
 	void InitLine();
-	void DrawBox(D3DXVECTOR2 topLeftPoint, D3DXVECTOR2 topRightPoint, D3DXVECTOR2 botRightPoint, D3DXVECTOR2 botLeftPoint, D3DCOLOR colour);
+	LPD3DXSPRITE GetLineBrush();
+	void DrawBox(int topLeftPoint, int topRightPoint, int botRightPoint, int botLeftPoint, D3DCOLOR colour);
 	void DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour);
-	void CleanUpLine();
 	Line();
 	~Line();
-
-private:
-	static Line* _instance;
-	LPD3DXLINE line = NULL;
-	RECT boxColRect;
 };
-
 

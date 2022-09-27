@@ -1,12 +1,12 @@
 #pragma once
-#pragma once
 #include <d3dx9.h>
-#include "D3DDeviceManager.h"
+#include "DirectXManager.h"
 
 class Sprite
 {
 private:
 	static Sprite* _instance;
+	LPD3DXSPRITE spriteBrush = NULL;
 	LPDIRECT3DTEXTURE9 texture = NULL;
 	int textureWidth;
 	int textureHeight;
@@ -23,6 +23,8 @@ private:
 
 public:
 	static Sprite* GetInstance();
+	void InitSpriteBrush();
+	LPD3DXSPRITE GetSpriteBrsuh();
 	void CreateTexture(LPCSTR texturePath);
 	void Draw(D3DCOLOR colour);
 
@@ -52,7 +54,7 @@ public:
 	void SetRotation(float rotation);
 	D3DXVECTOR2 GetPosition();
 	void SetPosition(D3DXVECTOR2 position);
-
+	
 
 	Sprite(int texWidth, int texHeight, int spriteWidth, int spriteHeight, D3DXVECTOR2 scaling, float rotation, D3DXVECTOR2 position);
 	Sprite();
