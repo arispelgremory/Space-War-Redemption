@@ -6,8 +6,10 @@
 
 #include "GameConfiguration.h"
 #include "WindowManager.h"
+#include "D3DDeviceManger.h"
 
 WindowManager* windowManager = new WindowManager();
+D3DDeviceManger* device = new D3DDeviceManger();
 
 //	use WinMain if you don't want the console
 int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
@@ -21,11 +23,13 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 	// Create Window
 	windowManager->CreateGameWindow();
 
+    // Create D3D Devices
+    device->CreateD3D9Device(windowManager->GetWindowHandle());
 
-	CreateMyDX();
+	// CreateMyDX();
 	CreateMyDInput();
 
-	while (WindowIsRunning()) {
+	while (windowManager->IsRunning()) {
 		GetInput();
 		Update(10);
 		Render();

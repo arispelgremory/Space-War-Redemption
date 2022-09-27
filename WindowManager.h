@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WINDOWMANAGER.H
-#define WINDOWMANAGER.H
+#ifndef WINDOWMANAGER_H
+#define WINDOWMANAGER_H
 
 #define WIN32_LEAN_AND_MEAN // Only include the skinny(LEAN) and powerful(MEAN) part of Windows.h
 #include <Windows.h>
