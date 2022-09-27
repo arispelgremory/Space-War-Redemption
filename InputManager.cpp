@@ -34,7 +34,7 @@ void InputManager::Init(HWND g_hWnd) {
 
     // Set Cooperative Level of Keyboard and Mouse Device;
     dInputKeyboardDevice->SetCooperativeLevel(g_hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
-    dInputKeyboardDevice->SetCooperativeLevel(g_hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+    dInputMouseDevice->SetCooperativeLevel(g_hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 }
 
 void InputManager::CleanUpInput() {
@@ -42,6 +42,10 @@ void InputManager::CleanUpInput() {
     dInputKeyboardDevice->Unacquire();
     dInputKeyboardDevice->Release();
     dInputKeyboardDevice = NULL;
+
+    dInputMouseDevice->Unacquire();
+    dInputMouseDevice->Release();
+    dInputMouseDevice = NULL;
 
     // Release Direct Input
     dInput->Release();
