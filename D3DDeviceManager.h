@@ -1,12 +1,12 @@
-#ifndef SPACEWARREDEMPTIONX_D3DDEVICEMANGER_H
-#define SPACEWARREDEMPTIONX_D3DDEVICEMANGER_H
+#ifndef SPACEWARREDEMPTIONX_D3DDEVICEMANAGER_H
+#define SPACEWARREDEMPTIONX_D3DDEVICEMANAGER_H
 #include "GameConfiguration.h"
 
-class D3DDeviceManger {
+class D3DDeviceManager {
     public:
-        D3DDeviceManger();
-        ~D3DDeviceManger();
-
+        D3DDeviceManager();
+        ~D3DDeviceManager();
+        static D3DDeviceManager* GetInstance();
         // Create Direct3D9 Device
         void CreateD3D9Device(HWND g_hWnd);
         // Begin Render (Begin scene and set up spriteBrush)
@@ -25,10 +25,11 @@ class D3DDeviceManger {
         IDirect3DDevice9* GetD3D9Device();
 
     private:
+        static D3DDeviceManager* _instance;
         IDirect3DDevice9* d3dDevice;
         IDirect3DDevice9** d3dDeviceReference;
         LPD3DXSPRITE spriteBrush = NULL;
 };
 
 
-#endif //SPACEWARREDEMPTIONX_D3DDEVICEMANGER_H
+#endif //SPACEWARREDEMPTIONX_D3DDEVICEMANAGER_H

@@ -1,5 +1,13 @@
 #include "FrameTimer.h"
 
+FrameTimer* FrameTimer::_instance = 0;
+FrameTimer* FrameTimer::GetInstance()
+{
+    if (_instance == 0)
+        _instance = new FrameTimer();
+    return _instance;
+}
+
 void FrameTimer::Init(int fps)
 {
     QueryPerformanceFrequency(&timerFreq);
