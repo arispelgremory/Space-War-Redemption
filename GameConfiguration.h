@@ -1,38 +1,48 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <d3d9.h>
+#include <d3dx9.h>
+#include <dinput.h>
+#include <iostream> // only keep this for error checking?
+#include <string>
+
 using namespace std;
 
-// Window Screen
-#define CLASS_NAME							"SnookerGame"
-#define TITLE_STR							"8-bit Snooker Game"
-#define SCREEN_WIDTH						800
-#define SCREEN_HEIGHT						600
+// isn't this part bad XD cause it'll try to read all the header files in every cpp file
+#include "WindowManager.h"
+#include "D3DDeviceManger.h"
+#include "InputManager.h"
+// #include "AudioManager.h"
 
-// Direct input
-#define DIRECTINPUT_VERSION					0x0800
-#define KEYBOARD_BUFFER_SIZE				1024
+#pragma comment(lib, "d3d9.lib ")
+#pragma comment(lib, "d3dx9.lib ")
+#pragma comment(lib, "dinput8.lib ")
+#pragma comment(lib, "dxguid.lib ")
 
+
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+
+#define GAMEFPS 24
 #define KEYDOWN(name, key) (name[key] & 0x80)
 #define MOUSEBUTTONDOWN(name, key) (name.rgbButtons[key] & 0x80)
 
-// Game fps
-#define GAME_FPS							10
-
-// Instances of Objects
+// Get Instance
 #define WINDOW								WindowManager::GetInstance()
-#define D3DDEVICE							DirectXManager::GetInstance()
+#define D3DDEVICE							D3DDeviceManager::GetInstance()
+#define FRAMETIMER							FrameTimer::GetInstance()
 #define SPRITE								Sprite::GetInstance()
 #define LINE								Line::GetInstance()
+#define TEXT								Text::GetInstance()
+#define USERINPUT							InputManager::GetInstance()
 
-// Scene IDs
-#define MAINMENU_SCENE_ID					9999
-#define SNOOKER_SCENE_ID					9998
-#define GAMEWIN_SCENE_ID					9997
+// Spaceship Info
+#define SPACESHIP_FILEPATH					"Assets/Images/spaceship.png"
+#define SPACESHIP_DIMENSION					64
 
-// 
-
-// Sound File Paths
-#define BGM1								"Assets/Sounds/bgm.mp3"
-#define BGM2								"Assets/Sounds/bgm2.mp3"
-#define WIN_BGM								"Assets/Sounds/win.mp3"
-#define HITSOUND							"Assets/Sounds/hit.mp3"
+// Collectible Info
+#define COLLECTIBLE_FILEPATH				"Assets/Images/collectible.png"
+#define COLLECTIBLE_DIMENSION				32
+#define COLLECTIBLE_SPRITEWIDTH				9
+#define COLLECTIBLE_SPRITEHEIGHT			9

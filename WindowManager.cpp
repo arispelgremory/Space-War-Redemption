@@ -1,76 +1,64 @@
 #include "WindowManager.h"
 
-WindowManager* WindowManager::_instance = 0;
-WindowManager::WindowManager()
-{
 
-}
+WindowManager::WindowManager() {}
 
-WindowManager* WindowManager::GetInstance()
-{
-	if (_instance == 0)
-		_instance = new WindowManager();
-	return _instance;
-}
+WindowManager::~WindowManager(){}
 
-LRESULT WindowManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
+LRESULT WindowManager::WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
 	switch (message)
 	{
+		//	the message is post when we destroy the window.
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
+
+	case  WM_KEYDOWN:
+		switch (wParam){
+			// Quit the message when escape key is pressed down
+		case VK_ESCAPE:
+			PostQuitMessage(0);
+			break;
+		}
+		break;
+		//	default handling for other messages.
 	default:
-		return DefWindowProc(hWnd, message, wParam, lParam);
+		return DefWindowProc(hWnd, message, wParam, lParam); // return messages back to the os
 	}
 
 	return 0;
 }
 
-void WindowManager::CreateGameWindow(HINSTANCE hInstance)
+WindowManager* WindowManager::_instance = 0;
+WindowManager* WindowManager::GetInstance()
 {
-	//	Set all members in wndClass to 0.
-	ZeroMemory(&wndClass, sizeof(wndClass));
+	if (_instance == 0)
+		_instance = new WindowManager;
+	return _instance;
+}
 
-	//	Filling wndClass. You are to refer to MSDN for each of the members details.
-	//	These are the fundamental structure members to be specify, in order to create your window.
+void WindowManager::CreateGameWindow() {
+	//	set all members in wndclass to 0.
+	ZeroMemory(&wndClass, sizeof(wndClass));
+	//	filling wndclass. you are to refer to msdn for each of the members details.
+	//	these are the fundamental structure members to be specify, in order to create your window.
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndClass.hInstance = GetModuleHandle(NULL);
-	wndClass.lpfnWndProc = WndProc; // Long Pointer to a window procedure function
-	wndClass.lpszClassName = CLASS_NAME;
+	wndClass.lpfnWndProc = WindowProcedure; // Long Pointer to a window procedure function
+	wndClass.lpszClassName = "Space War Redemption";
 	wndClass.style = CS_HREDRAW | CS_VREDRAW;
 
-	//	Register the window.
+	//	register the window.
 	RegisterClass(&wndClass);
+
+	//	you are to refer to msdn for each of the parameters details.
+	//  create instance of window
+	g_hWnd = CreateWindowEx(0, wndClass.lpszClassName, "Space War Redemption", WS_OVERLAPPEDWINDOW, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, NULL, NULL, GetModuleHandle(NULL), NULL);
+	ShowWindow(g_hWnd, 1);
 }
 
-void WindowManager::InitWindowHandler(HINSTANCE hInstance, int nCmdShow)
-{
-	CreateGameWindow(hInstance);
-
-	//  Create instance of window
-	HWND hWnd = CreateWindowEx(
-		0, CLASS_NAME, TITLE_STR, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, SCREEN_WIDTH, SCREEN_HEIGHT, NULL, NULL, GetModuleHandle(NULL), NULL);
-
-	if (!hWnd)
-	{
-		return;
-	}
-
-	ShowWindow(hWnd, nCmdShow);
-	UpdateWindow(hWnd);
-	//ShowCursor(false);
-	this->hWnd = hWnd;
-}
-
-HWND WindowManager::GetWindowHandler()
-{
-	return hWnd;
-}
-
-bool WindowManager::IsRunning()
-{
+bool WindowManager::IsRunning() {
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg)); // Set memory to zero (To clear the memory)
 	bool running = true;
@@ -87,11 +75,10 @@ bool WindowManager::IsRunning()
 	return running;
 }
 
-void WindowManager::CleanUpWindow()
-{
+void WindowManager::CleanUpWindow() {
 	UnregisterClass(wndClass.lpszClassName, GetModuleHandle(NULL));
 }
 
-WindowManager::~WindowManager()
-{
+HWND WindowManager::GetWindowHandle() {
+	return g_hWnd;
 }

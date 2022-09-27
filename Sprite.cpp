@@ -7,77 +7,62 @@ Sprite* Sprite::GetInstance()
     return _instance;
 }
 
-void Sprite::InitSpriteBrush()
-{
-    LPD3DXSPRITE spriteBrush;
-    //	Create sprite. Study the documentation. 
-    HRESULT hr = D3DXCreateSprite(D3DDEVICE->GetD3DDevice(), &spriteBrush);
-
-    if (FAILED(hr)) 
-    {
-        cout << "Create sprite brush failed\n";
-        return;
-    }
-
-    this->spriteBrush = spriteBrush;
-}
-
-LPD3DXSPRITE Sprite::GetSpriteBrsuh()
-{
-    return spriteBrush;
-}
-
 void Sprite::CreateTexture(LPCSTR texturePath)
 {
     HRESULT hr;
     hr = D3DXCreateTextureFromFile(D3DDEVICE->GetD3DDevice(), texturePath, &texture);
     if (FAILED(hr)) {
         cout << "Create Texture failed!" << endl;
+        return;
     }
 }
 
 void Sprite::Draw(D3DCOLOR colour)
 {
     D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, rotation, &position);
-    spriteBrush->SetTransform(mat);
-    spriteBrush->Draw(this->texture, &colRect, NULL, NULL, colour);
+    D3DDEVICE->GetSpriteBrush()->SetTransform(mat);
+    D3DDEVICE->GetSpriteBrush()->Draw(this->texture, &colRect, NULL, NULL, colour);
 
 }
 
 int Sprite::GetTextureWidth()
 {
-    return 0;
+    return textureWidth;
 }
 
 void Sprite::SetTextureWidth(int textureWidth)
 {
+    this->textureWidth = textureWidth;
 }
 
 int Sprite::GetTextureHeight()
 {
-    return 0;
+    return textureHeight;
 }
 
 void Sprite::SetTextureHeight(int textureHeight)
 {
+    this->textureHeight = textureHeight;
 }
 
 int Sprite::GetSpriteWidth()
 {
-    return 0;
+    return spriteWidth;
 }
 
 void Sprite::SetSpriteWidth(int spriteWidth)
 {
+    this->spriteWidth = spriteWidth;
 }
 
 int Sprite::GetSpriteHeight()
 {
-    return 0;
+    return spriteHeight;
 }
 
 void Sprite::SetSpriteHeight(int spriteHeight)
 {
+    this->spriteHeight = spriteHeight;
 }
 
 Sprite::Sprite(int texWidth, int texHeight, int spriteWidth, int spriteHeight, D3DXVECTOR2 scaling, float rotation, D3DXVECTOR2 position)
@@ -109,45 +94,50 @@ Sprite::~Sprite()
 
 D3DXMATRIX* Sprite::GetTransformationMatrix()
 {
-    return nullptr;
+    return mat;
 }
 
 void Sprite::SetTransformationMatrix(D3DXMATRIX* mat)
 {
+    this->mat = mat;
 }
 
 D3DXVECTOR2 Sprite::GetScaling()
 {
-    return D3DXVECTOR2();
+    return scaling;
 }
 
 void Sprite::SetScaling(D3DXVECTOR2 scaling)
 {
+    this->scaling = scaling;
 }
 
 D3DXVECTOR2 Sprite::GetSpriteCenter()
 {
-    return D3DXVECTOR2();
+    return spriteCenter;
 }
 
 void Sprite::SetSpriteCenter(D3DXVECTOR2 spriteCenter)
 {
+    this->spriteCenter = spriteCenter;
 }
 
 float Sprite::GetRotation()
 {
-    return 0.0f;
+    return rotation;
 }
 
 void Sprite::SetRotation(float rotation)
 {
+    this->rotation = rotation;
 }
 
 D3DXVECTOR2 Sprite::GetPosition()
 {
-    return D3DXVECTOR2();
+    return position;
 }
 
 void Sprite::SetPosition(D3DXVECTOR2 position)
 {
+    this->position = position;
 }
