@@ -1,5 +1,6 @@
 #pragma once
 #include "fmod.hpp"
+#include "GameConfiguration.h"
 class AudioManager
 {
 public:
@@ -15,7 +16,7 @@ public:
 	void PlayEngineSound();
 	void PlayCrashSound();
 	void PlayBGM();
-	void ManipulateEngineSound(D3DXVECTOR2 acceleration)
+	void ManipulateEngineSound(D3DXVECTOR2 acceleration);
 	void LoadSounds();
 	void UpdateSound();
 

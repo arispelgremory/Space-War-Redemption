@@ -40,9 +40,9 @@ void AudioManager::PlayBGM()
 	bGMChannel->setPitch(0.5);
 }
 
-void AudioManager::ManipulateEngineSound(acceleration)
+void AudioManager::ManipulateEngineSound(D3DXVECTOR2 acceleration)
 {
-	if (acceleration == (0, 0))
+	if (acceleration == D3DXVECTOR2(0, 0))
 	{
 		result = engineChannel->setPaused(true);
 	}

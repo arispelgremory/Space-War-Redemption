@@ -37,7 +37,8 @@ using namespace std;
 // Spaceship Info
 #define SPACESHIP_FILEPATH					"Assets/Images/spaceship.png"
 #define SPACESHIP_DIMENSION					64
-enum SPACESHIP_STATE { IDLE, MOVING, ROTATERIGHT, ROTATELEFT, DAMAGED, DIED };
+#define SPACESHIP_ANIM_FPS					10
+enum SPACESHIP_STATE { IDLE, MOVE_FORWARD, MOVE_BACKWARD, ROTATE_RIGHT, ROTATE_LEFT, DAMAGED, DIED };
 
 // Collectible Info
 #define COLLECTIBLE_FILEPATH				"Assets/Images/collectible.png"
