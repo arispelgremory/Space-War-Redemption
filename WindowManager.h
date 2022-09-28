@@ -7,22 +7,22 @@
 #include "GameConfiguration.h"
 
 class WindowManager {
-	public:
-		WindowManager();
-		~WindowManager();
+public:
+	WindowManager();
+	~WindowManager();
 
-		static WindowManager* GetInstance();
-		static LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-		void CreateGameWindow();
-		bool IsRunning();
+	static WindowManager* GetInstance();
+	static LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	void CreateGameWindow();
+	bool IsRunning();
 
-		void CleanUpWindow();
-		HWND GetWindowHandle();
+	void CleanUpWindow();
+	HWND GetWindowHandle();
 
-	private:
-		static WindowManager* _instance;
-		HWND g_hWnd = NULL;
-		WNDCLASS wndClass;
+private:
+	static WindowManager* _instance;
+	HWND g_hWnd = NULL;
+	WNDCLASS wndClass;
 
 };
 

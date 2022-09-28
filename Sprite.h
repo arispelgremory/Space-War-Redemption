@@ -15,9 +15,11 @@ private:
 	int spriteWidth;
 	int spriteHeight;
 	int maxFrame;
-	
+
 	RECT animRect;
 	RECT colRect;
+
+	D3DCOLOR colour;
 
 	// Transformation
 	D3DXMATRIX* mat;
@@ -28,8 +30,11 @@ private:
 
 public:
 	static Sprite* GetInstance();
+	void InitSprite(int texWidth, int texHeight, int spriteWidth, int spriteHeight, D3DXVECTOR2 scaling, float rotation, D3DXVECTOR2 position);
+	void InitSprite(int texWidth, int texHeight, int texCol, int texRow, D3DXVECTOR2 scaling, float rotation, float xPos, float yPos);
 	void CreateTexture(IDirect3DDevice9* d3d9Device, LPCSTR texturePath);
 	void Draw(LPD3DXSPRITE spriteBrush, D3DCOLOR colour);
+	void Draw(LPD3DXSPRITE spriteBrush);
 
 	// Texture Height & Width, Row & Column
 	int GetTextureWidth();
@@ -52,6 +57,10 @@ public:
 	// Collision Rectangle
 	RECT GetColRect();
 
+	// Colour
+	void SetColour(D3DCOLOR colour);
+	D3DCOLOR GetColour();
+
 	// Transformation
 	D3DXMATRIX* GetTransformationMatrix();
 	void SetTransformationMatrix(D3DXMATRIX* mat);
@@ -63,9 +72,14 @@ public:
 	void SetRotation(float rotation);
 	D3DXVECTOR2 GetPosition();
 	void SetPosition(D3DXVECTOR2 position);
+	float GetXPosition();
+	void SetXPosition(float xPos);
+	float GetYPosition();
+	void SetYPosition(float yPos);
 
-
+	void DestroyTexture();
 	Sprite(int texWidth, int texHeight, int spriteWidth, int spriteHeight, D3DXVECTOR2 scaling, float rotation, D3DXVECTOR2 position);
+	Sprite(int texWidth, int texHeight, int texCol, int texRow, D3DXVECTOR2 scaling, float rotation, float xPos, float yPos);
 	Sprite();
 	~Sprite();
 };

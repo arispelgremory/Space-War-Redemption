@@ -7,14 +7,18 @@ GameObject::GameObject()
 GameObject::~GameObject()
 {
 }
-//
-//void GameObject::Update()
-//{
-//}
-//
-//void GameObject::Render()
-//{
-//}
+
+void GameObject::Init()
+{
+}
+
+void GameObject::Update()
+{
+}
+
+void GameObject::Render()
+{
+}
 
 int GameObject::GetHP()
 {

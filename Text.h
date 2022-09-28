@@ -11,9 +11,10 @@ private:
 	INT fontHeight;
 	UINT fontWeight;
 	RECT textRect;
+	D3DCOLOR colour;
 
 	// Transformation
-	D3DMATRIX* mat; 
+	D3DXMATRIX* mat;
 	D3DXVECTOR2 scaling;
 	D3DXVECTOR2 spriteCenter;
 	D3DXVECTOR2 position;
@@ -25,6 +26,9 @@ public:
 	void SetFontHeight(INT fontHeight);
 	void SetFontWeight(UINT fontWeight);
 
+	void SetColour(D3DCOLOR colour);
+	D3DCOLOR GetColour();
+
 	// Transformation
 	D3DXMATRIX* GetTransformationMatrix();
 	void SetTransformationMatrix(D3DXMATRIX* mat);
@@ -34,8 +38,11 @@ public:
 	void SetSpriteCenter(D3DXVECTOR2 spriteCenter);
 	D3DXVECTOR2 GetPosition();
 	void SetPosition(D3DXVECTOR2 position);
+	RECT GetTextRect();
+	void SetTextRect(int top, int right, int left, int bottom);
 
 	void DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format, D3DCOLOR colour);
+	void DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format);
 
 	void CleanUpText();
 

@@ -12,9 +12,11 @@ protected:
 public:
 	GameObject();
 	~GameObject();
-	////virtual void Init();
-	//virtual void Update();
-	//virtual void Render();
+
+	virtual void Init();
+	virtual void Update();
+	virtual void Render();
+
 	int GetHP();
 	void SetHP(int hp);
 	int GetState();

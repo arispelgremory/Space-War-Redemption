@@ -11,7 +11,7 @@ Text* Text::GetInstance()
 void Text::InitText(IDirect3DDevice9* d3d9Device)
 {
 	LPD3DXFONT font;
-	hr = D3DXCreateFont(d3d9Device, fontHeight, 0, fontWeight, 1, false,
+	HRESULT hr = D3DXCreateFont(d3d9Device, fontHeight, 0, fontWeight, 1, false,
 		DEFAULT_CHARSET, OUT_TT_ONLY_PRECIS, DEFAULT_QUALITY,
 		DEFAULT_PITCH | FF_DONTCARE, "Arial", &font);
 
@@ -33,13 +33,26 @@ void Text::SetFontWeight(UINT fontWeight)
 	this->fontWeight = fontWeight;
 }
 
+
+
 void Text::DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format, D3DCOLOR colour)
 {
 	D3DXVECTOR2 spriteCenter = D3DXVECTOR2(textRect.right - textRect.left, textRect.bottom - textRect.top);
 
 	D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, NULL, &position);
 	spriteBrush->SetTransform(mat);
-	
+
+	font->DrawText(spriteBrush, text, count, &textRect, format, colour);
+}
+
+
+void Text::DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format)
+{
+	D3DXVECTOR2 spriteCenter = D3DXVECTOR2(textRect.right - textRect.left, textRect.bottom - textRect.top);
+
+	D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, NULL, &position);
+	spriteBrush->SetTransform(mat);
+
 	font->DrawText(spriteBrush, text, count, &textRect, format, colour);
 }
 
@@ -70,10 +83,21 @@ Text::~Text()
 {
 }
 
+D3DCOLOR Text::GetColour()
+{
+	return colour;
+}
+
+void Text::SetColour(D3DCOLOR colour)
+{
+	this->colour = colour;
+}
+
 D3DXMATRIX* Text::GetTransformationMatrix()
 {
 	return mat;
 }
+
 
 void Text::SetTransformationMatrix(D3DXMATRIX* mat)
 {
@@ -108,4 +132,17 @@ D3DXVECTOR2 Text::GetPosition()
 void Text::SetPosition(D3DXVECTOR2 position)
 {
 	this->position = position;
+}
+
+RECT Text::GetTextRect()
+{
+	return textRect;
+}
+
+void Text::SetTextRect(int top, int right, int left, int bottom)
+{
+	this->textRect.top = top;
+	this->textRect.right = right;
+	this->textRect.left = left;
+	this->textRect.bottom = bottom;
 }

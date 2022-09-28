@@ -8,10 +8,23 @@ Line* Line::GetInstance()
     return _instance;
 }
 
+RECT Line::GetBoxColRect()
+{
+    return boxColRect;
+}
+
+void Line::SetBoxColRect(int top, int right, int left, int bottom)
+{
+    this->boxColRect.top = top;
+    this->boxColRect.right = right;
+    this->boxColRect.left = left;
+    this->boxColRect.bottom = bottom;
+}
+
 void Line::InitLine(IDirect3DDevice9* d3d9Device)
 {
     LPD3DXLINE line;
-    hr = D3DXCreateLine(d3d9Device, &line);
+    HRESULT hr = D3DXCreateLine(d3d9Device, &line);
     if (FAILED(hr))
     {
         cout << "Create line failed" << endl;
@@ -21,17 +34,45 @@ void Line::InitLine(IDirect3DDevice9* d3d9Device)
     this->line = line;
 }
 
-void Line::DrawBox(D3DXVECTOR2 topLeftPoint, D3DXVECTOR2 topRightPoint, D3DXVECTOR2 botRightPoint, D3DXVECTOR2 botLeftPoint, D3DCOLOR colour)
+void Line::InitBox(D3DXVECTOR2 topLeftPoint, D3DXVECTOR2 topRightPoint, D3DXVECTOR2 botRightPoint, D3DXVECTOR2 botLeftPoint)
 {
-    DrawALine(topLeftPoint, topRightPoint, colour);
-    DrawALine(topRightPoint, botRightPoint, colour);
-    DrawALine(botLeftPoint, botRightPoint, colour);
-    DrawALine(topLeftPoint, botLeftPoint, colour);
-
+    /*
+    * Example box for visualization
+    * (100, 300)                 (400, 300)
+    *
+    *
+    * (100, 500)                 (400, 500)
+    *
+    * topLeft.x = botLeft.x
+    * topRight.x = botRight.x
+    *
+    * topLeft.y = topRight.y
+    * botLeft.y = botRight.y
+    */
     boxColRect.top = topLeftPoint.y;
     boxColRect.left = topLeftPoint.x;
     boxColRect.bottom = botRightPoint.y;
     boxColRect.right = botRightPoint.x;
+}
+
+void Line::DrawBox(D3DCOLOR colour)
+{
+    /*DrawALine(topLeftPoint, topRightPoint, colour);
+    DrawALine(topRightPoint, botRightPoint, colour);
+    DrawALine(botLeftPoint, botRightPoint, colour);
+    DrawALine(topLeftPoint, botLeftPoint, colour);*/
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.top), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.right), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.left, boxColRect.right), colour);
+}
+
+void Line::DrawBox()
+{
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.top), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.right), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.left, boxColRect.right), colour);
 }
 
 void Line::DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour)
@@ -45,6 +86,26 @@ void Line::CleanUpLine()
     //	Release and clean up line
     line->Release();
     line = NULL;
+}
+
+D3DCOLOR Line::GetColour()
+{
+    return colour;
+}
+
+void Line::SetIsFocus(bool isFocus)
+{
+    this->isFocus = isFocus;
+}
+
+bool Line::GetIsFocus()
+{
+    return isFocus;
+}
+
+void Line::SetColour(D3DCOLOR colour)
+{
+    this->colour = colour;
 }
 
 Line::Line()

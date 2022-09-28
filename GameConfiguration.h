@@ -10,7 +10,6 @@
 using namespace std;
 
 // isn't this part bad XD cause it'll try to read all the header files in every cpp file
-// but it will be only compile once in the main function there, so it's ok
 #include "WindowManager.h"
 #include "D3DDeviceManager.h"
 #include "InputManager.h"
@@ -29,18 +28,16 @@ using namespace std;
 #define KEYDOWN(name, key) (name[key] & 0x80)
 #define MOUSEBUTTONDOWN(name, key) (name.rgbButtons[key] & 0x80)
 
-//// Get Instance
-//#define WINDOW								WindowManager::GetInstance()
-//#define D3DDEVICE							D3DDeviceManager::GetInstance()
-//#define FRAMETIMER							FrameTimer::GetInstance()
-//#define SPRITE								Sprite::GetInstance()
-//#define LINE								Line::GetInstance()
-//#define TEXT								Text::GetInstance()
-//#define USERINPUT							InputManager::GetInstance()
+// Space background info
+#define BG_FILEPATH							"Assets/Images/space_bg.png"
+#define BG_DIMENSION						1024
+#define BG_SPRITEWIDTH						800
+#define BG_SPRITEHEIGHT						600
 
 // Spaceship Info
 #define SPACESHIP_FILEPATH					"Assets/Images/spaceship.png"
 #define SPACESHIP_DIMENSION					64
+enum SPACESHIP_STATE { IDLE, MOVING, ROTATERIGHT, ROTATELEFT, DAMAGED, DIED };
 
 // Collectible Info
 #define COLLECTIBLE_FILEPATH				"Assets/Images/collectible.png"

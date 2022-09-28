@@ -3,9 +3,9 @@
 
 WindowManager::WindowManager() {}
 
-WindowManager::~WindowManager(){}
+WindowManager::~WindowManager() {}
 
-LRESULT WindowManager::WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
+LRESULT WindowManager::WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 	switch (message)
 	{
 		//	the message is post when we destroy the window.
@@ -14,7 +14,7 @@ LRESULT WindowManager::WindowProcedure(HWND hWnd, UINT message, WPARAM wParam, L
 		break;
 
 	case  WM_KEYDOWN:
-		switch (wParam){
+		switch (wParam) {
 			// Quit the message when escape key is pressed down
 		case VK_ESCAPE:
 			PostQuitMessage(0);
