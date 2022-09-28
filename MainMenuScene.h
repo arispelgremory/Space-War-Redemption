@@ -20,10 +20,10 @@ private:
 public:
 	MainMenuScene();
 	~MainMenuScene();
-	void Initialize(IDirect3DDevice9* d3dDevice);
-	void GetInput();
-	void Update();
-	void Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice);
-	void Clean();
+	void Initialize(IDirect3DDevice9* d3dDevice) override;
+	void GetInput() override;
+	void Update() override;
+	void Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice) override;
+	void Clean() override;
 };
 

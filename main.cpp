@@ -2,9 +2,12 @@
 // #define -> Instruction to communicate with the compiler
 #define WIN32_LEAN_AND_MEAN // Only include the skinny(LEAN) and powerful(MEAN) part of Windows.h
 #include "GameConfiguration.h"
+#include "MainMenuScene.h"
+#include "Scenes.h"
 #include "Line.h"
 #include "Text.h"
 #include "FrameTimer.h"
+
 
 WindowManager* windowManager = new WindowManager();
 D3DDeviceManager* deviceManager = new D3DDeviceManager();
@@ -13,9 +16,16 @@ Text* textObject = new Text();
 InputManager* inputManager = new InputManager();
 
 FrameTimer* timer = new FrameTimer();
+vector<Scenes*> SCENES;
+
+void Initialize() {
+    SCENES.push_back(new MainMenuScene());
+    SCENES.back()->Initialize(deviceManager->GetD3D9Device());
+    
+}
 
 void Update(int FPS) {
-
+    SCENES.back()->Update();
 }
 
 void Render() {
@@ -23,6 +33,7 @@ void Render() {
     deviceManager->BeginSpriteBrush();
 
     // Draw Something here
+    SCENES.back()->Render(deviceManager->GetSpriteBrush(), deviceManager->GetD3D9Device());
 
     deviceManager->EndSpriteBrush();
     deviceManager->SwapScene();
@@ -39,23 +50,35 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     // Create Window
     windowManager->CreateGameWindow();
+    cout << "Test 0" << endl;
 
     // Create D3D Devices
     deviceManager->CreateD3D9Device(windowManager->GetWindowHandle());
+    cout << "Test 1" << endl;
+    
     lineObject->InitLineObject(deviceManager->GetD3D9Device());
+    cout << "Test 2" << endl;
+    
     textObject->InitTextObject(deviceManager->GetD3D9Device());
+    cout << "Test 3" << endl;
 
 
     // Create Input
     inputManager->Init(windowManager->GetWindowHandle());
+    cout << "Test 4" << endl;
     timer->Init(GAMEFPS);
+    cout << "Test 5" << endl;
 
     // initialize game level
+    Initialize();
 
     while (windowManager->IsRunning()) {
         inputManager->GetInput();
+        cout << "Test 7" << endl;
         Update(timer->framesToUpdate());
+        cout << "Test 8" << endl;
         Render();
+        cout << "Test 9" << endl;
     }
 
     // Clean up

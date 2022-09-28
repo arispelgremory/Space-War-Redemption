@@ -31,6 +31,7 @@ void Scenes::Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice)
 
 void Scenes::Update()
 {
+    
 }
 
 void Scenes::Clean()

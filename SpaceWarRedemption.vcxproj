@@ -132,19 +132,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="Collectible.cpp" />
     <ClCompile Include="D3DDeviceManager.cpp" />
     <ClCompile Include="FrameTimer.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="Scenes.cpp" />
+    <ClCompile Include="Spaceship.cpp" />
+    <ClCompile Include="SpaceshipScene.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="Collectible.h" />
     <ClInclude Include="D3DDeviceManager.h" />
     <ClInclude Include="FrameTimer.h" />
     <ClInclude Include="GameConfiguration.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="Physics.h" />
+    <ClInclude Include="Scenes.h" />
+    <ClInclude Include="Spaceship.h" />
+    <ClInclude Include="SpaceshipScene.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

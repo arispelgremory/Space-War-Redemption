@@ -13,15 +13,20 @@ void MainMenuScene::Initialize(IDirect3DDevice9* d3dDevice)
 {
 	// Initialize background image
 	bg = new Sprite(BG_DIMENSION, BG_DIMENSION, BG_SPRITEWIDTH, BG_SPRITEHEIGHT, D3DXVECTOR2(1.0f, 1.0f), NULL, D3DXVECTOR2(0, 0));
+	cout << "Test 8.1" << endl;
 	bg->CreateTexture(d3dDevice, BG_FILEPATH);
-
+	cout << "Test 8.2" << endl;
+	
 	// Initialize Game Title
 	//Text(int top, int right, int left, int bottom, INT fontHeight, UINT fontWeight, D3DXVECTOR2 position, D3DXVECTOR2 scaling)
 	mainTitle = new Text(0, 0, WINDOW_WIDTH / 2, 200, 200, FW_BOLD, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
-
+	cout << "Test 8.3" << endl;
+	
 	// Initialize Play Button
 	playBox->InitBox(D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2());
+	cout << "Test 8.4" << endl;
 	playBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
+
 	playText = new Text(playBox->GetBoxColRect().top, playBox->GetBoxColRect().right, playBox->GetBoxColRect().left, playBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
 	playText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
@@ -52,6 +57,7 @@ void MainMenuScene::GetInput()
 
 void MainMenuScene::Update()
 {
+	cout << "main menu update" << endl;
 	if (exitBox->GetIsFocus())
 	{
 		playBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));

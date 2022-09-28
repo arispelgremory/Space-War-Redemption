@@ -7,12 +7,15 @@
 #include <iostream> // only keep this for error checking?
 #include <string>
 
+#include "Scenes.h"
+class Scenes;
 using namespace std;
 
 // isn't this part bad XD cause it'll try to read all the header files in every cpp file
 #include "WindowManager.h"
 #include "D3DDeviceManager.h"
 #include "InputManager.h"
+
 // #include "AudioManager.h"
 
 #pragma comment(lib, "d3d9.lib ")
@@ -45,3 +48,6 @@ enum SPACESHIP_STATE { IDLE, MOVE_FORWARD, MOVE_BACKWARD, ROTATE_RIGHT, ROTATE_L
 #define COLLECTIBLE_DIMENSION				32
 #define COLLECTIBLE_SPRITEWIDTH				9
 #define COLLECTIBLE_SPRITEHEIGHT			9
+
+// Scenes
+extern vector<Scenes*> SCENES;
