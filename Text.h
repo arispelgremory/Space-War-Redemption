@@ -21,7 +21,8 @@ private:
 public:
 	static Text* GetInstance();
 
-	void InitText(IDirect3DDevice9* d3d9Device);
+	void InitTextObject(IDirect3DDevice9* d3d9Device);
+	void InitText(int top, int right, int left, int bottom, INT fontHeight, UINT fontWeight, D3DXVECTOR2 position, D3DXVECTOR2 scaling);
 
 	void SetFontHeight(INT fontHeight);
 	void SetFontWeight(UINT fontWeight);

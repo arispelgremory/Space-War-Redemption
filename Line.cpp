@@ -21,7 +21,7 @@ void Line::SetBoxColRect(int top, int right, int left, int bottom)
     this->boxColRect.bottom = bottom;
 }
 
-void Line::InitLine(IDirect3DDevice9* d3d9Device)
+void Line::InitLineObject(IDirect3DDevice9* d3d9Device)
 {
     LPD3DXLINE line;
     HRESULT hr = D3DXCreateLine(d3d9Device, &line);
@@ -32,6 +32,19 @@ void Line::InitLine(IDirect3DDevice9* d3d9Device)
     }
 
     this->line = line;
+}
+
+void Line::InitLine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour)
+{
+    this->startPoint = startPoint;
+    this->endPoint = endPoint;
+    this->colour = colour;
+}
+
+void Line::InitLine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint)
+{
+    this->startPoint = startPoint;
+    this->endPoint = endPoint;
 }
 
 void Line::InitBox(D3DXVECTOR2 topLeftPoint, D3DXVECTOR2 topRightPoint, D3DXVECTOR2 botRightPoint, D3DXVECTOR2 botLeftPoint)
@@ -76,6 +89,18 @@ void Line::DrawBox()
 }
 
 void Line::DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour)
+{
+    D3DXVECTOR2 vertices[] = { startPoint, endPoint };
+    line->Draw(vertices, 2, colour);
+}
+
+void Line::DrawALine(D3DCOLOR colour)
+{
+    D3DXVECTOR2 vertices[] = { startPoint, endPoint };
+    line->Draw(vertices, 2, colour);
+}
+
+void Line::DrawALine()
 {
     D3DXVECTOR2 vertices[] = { startPoint, endPoint };
     line->Draw(vertices, 2, colour);

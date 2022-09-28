@@ -2,10 +2,14 @@
 // #define -> Instruction to communicate with the compiler
 #define WIN32_LEAN_AND_MEAN // Only include the skinny(LEAN) and powerful(MEAN) part of Windows.h
 #include "GameConfiguration.h"
+#include "Line.h"
+#include "Text.h"
 #include "FrameTimer.h"
 
 WindowManager* windowManager = new WindowManager();
 D3DDeviceManager* deviceManager = new D3DDeviceManager();
+Line* lineObject = new Line();
+Text* textObject = new Text();
 InputManager* inputManager = new InputManager();
 
 FrameTimer* timer = new FrameTimer();
@@ -35,24 +39,33 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     // Create Window
     windowManager->CreateGameWindow();
-    
+
     // Create D3D Devices
     deviceManager->CreateD3D9Device(windowManager->GetWindowHandle());
+    lineObject->InitLineObject(deviceManager->GetD3D9Device());
+    textObject->InitTextObject(deviceManager->GetD3D9Device());
+
 
     // Create Input
     inputManager->Init(windowManager->GetWindowHandle());
     timer->Init(GAMEFPS);
+
+    // initialize game level
 
     while (windowManager->IsRunning()) {
         inputManager->GetInput();
         Update(timer->framesToUpdate());
         Render();
     }
+
+    // Clean up
     // CleanupMyLevel();
     inputManager->CleanUpInput();
+    lineObject->CleanUpLine();
+    textObject->CleanUpText();
     deviceManager->CleanUpMyD3D9Device();
     windowManager->CleanUpWindow();
 
-	return 0;
+    return 0;
 }
 

@@ -8,7 +8,7 @@ Text* Text::GetInstance()
 	return _instance;
 }
 
-void Text::InitText(IDirect3DDevice9* d3d9Device)
+void Text::InitTextObject(IDirect3DDevice9* d3d9Device)
 {
 	LPD3DXFONT font;
 	HRESULT hr = D3DXCreateFont(d3d9Device, fontHeight, 0, fontWeight, 1, false,
@@ -23,6 +23,18 @@ void Text::InitText(IDirect3DDevice9* d3d9Device)
 	this->font = font;
 }
 
+void Text::InitText(int top, int right, int left, int bottom, INT fontHeight, UINT fontWeight, D3DXVECTOR2 position, D3DXVECTOR2 scaling)
+{
+	textRect.top = top;
+	textRect.right = right;
+	textRect.bottom = bottom;
+	textRect.left = left;
+	this->fontHeight = fontHeight;
+	this->fontWeight = fontWeight;
+	this->scaling = scaling;
+	this->position = position;
+}
+
 void Text::SetFontHeight(INT fontHeight)
 {
 	this->fontHeight = fontHeight;
@@ -32,8 +44,6 @@ void Text::SetFontWeight(UINT fontWeight)
 {
 	this->fontWeight = fontWeight;
 }
-
-
 
 void Text::DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format, D3DCOLOR colour)
 {

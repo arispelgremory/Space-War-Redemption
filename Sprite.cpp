@@ -144,12 +144,32 @@ void Sprite::SetSpriteHeight(int spriteHeight)
 
 RECT Sprite::GetAnimRect()
 {
-    return RECT();
+    return animRect;
+}
+
+int Sprite::GetFrameCounter()
+{
+    return frameCounter;
+}
+
+void Sprite::SetFrameCounter(int frameCounter)
+{
+    this->frameCounter = frameCounter;
+}
+
+int Sprite::GetMaxFrame()
+{
+    return maxFrame;
+}
+
+void Sprite::SetMaxFrame(int maxFrame)
+{
+    this->maxFrame = maxFrame;
 }
 
 RECT Sprite::GetColRect()
 {
-    return RECT();
+    return colRect;
 }
 
 void Sprite::DestroyTexture()

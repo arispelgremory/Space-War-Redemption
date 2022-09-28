@@ -13,6 +13,8 @@ public:
     void Init(HWND g_hWnd);
     bool IsKeyDown(int KeyCode);
 
+    bool IsMouseButtonDown(int KeyCode);
+
     // Clean Up
     void CleanUpInput();
 

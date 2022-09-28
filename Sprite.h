@@ -8,13 +8,16 @@ class Sprite
 private:
 	static Sprite* _instance;
 	LPDIRECT3DTEXTURE9 texture = NULL;
-	int textureWidth;
-	int textureHeight;
-	int textureRow;
-	int textureCol;
-	int spriteWidth;
-	int spriteHeight;
-	int maxFrame;
+	int textureWidth = 0;
+	int textureHeight = 0;
+	int textureRow = 0;
+	int textureCol = 0;
+	int spriteWidth = 0;
+	int spriteHeight = 0;
+
+
+	int frameCounter = 0;
+	int maxFrame = 0;
 
 	RECT animRect;
 	RECT colRect;
@@ -25,7 +28,7 @@ private:
 	D3DXMATRIX* mat;
 	D3DXVECTOR2 scaling;
 	D3DXVECTOR2 spriteCenter;
-	float rotation;
+	float rotation = 0.0f;
 	D3DXVECTOR2 position;
 
 public:
@@ -51,6 +54,12 @@ public:
 	void SetSpriteWidth(int spriteWidth);
 	int GetSpriteHeight();
 	void SetSpriteHeight(int spriteHeight);
+
+
+	int GetMaxFrame();
+	void SetMaxFrame(int maxFrame);
+	int GetFrameCounter();
+	void SetFrameCounter(int frameCounter);
 
 	//Animation Rectangle
 	RECT GetAnimRect();

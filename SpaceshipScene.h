@@ -6,15 +6,24 @@
 class SpaceshipScene : public Scenes
 {
 private:
-	Sprite* bg = new Sprite;
+	Sprite* bg = new Sprite();
 	Spaceship* player1 = new Spaceship();
+	Spaceship* player2 = new Spaceship();
 	Collectible* collectible[10];
+	// see how many items are left on the screen
+	int collectibleLeft = 0;
+
+	// Scoreboard - on top of the screen
+	Line* line = new Line();
+	Text* player1HP = new Text();
+	Text* player2HP = new Text();
+
 public:
 	SpaceshipScene();
 	~SpaceshipScene();
 	void Initialize(IDirect3DDevice9* d3dDevice);
 	void GetInput();
-	void Update();
+	void Update(int framesToUpdate);
 	void Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice);
 	void Clean();
 };

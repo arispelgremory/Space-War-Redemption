@@ -21,6 +21,11 @@ void Collectible::Init(IDirect3DDevice9* d3d9Device, float xPos, float yPos)
 	SetHP(1);
 }
 
+Sprite* Collectible::GetCollectible()
+{
+	return this->collectible;
+}
+
 void Collectible::Update()
 {
 	if (isCollide)

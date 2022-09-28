@@ -48,7 +48,21 @@ void InputManager::Init(HWND g_hWnd) {
 // Check whether a key is pressed
 bool InputManager::IsKeyDown(int KeyCode)
 {
+    //	Get immediate Keyboard Data.
+    dInputKeyboardDevice->GetDeviceState(256, diKeys);
+    //	Acquire the device.
+    dInputKeyboardDevice->Acquire();
+
     return (diKeys[KeyCode] & 0x80) > 0;
+}
+
+// Check whether a mouse button is pressed
+bool InputManager::IsMouseButtonDown(int KeyCode)
+{
+    dInputMouseDevice->Acquire();
+
+    return (mouseState.rgbButtons[KeyCode] & 0x80) > 0;
+
 }
 
 void InputManager::CleanUpInput() {
