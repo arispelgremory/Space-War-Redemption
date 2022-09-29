@@ -1,4 +1,5 @@
 ﻿#include "Physics.h"
+#include "GameConfiguration.h"
 
 bool Physics::CircleColDetection(int radiusA, int radiusB, D3DXVECTOR2 positionA, D3DXVECTOR2 positionB) {
     const D3DXVECTOR2 distance = positionA - positionB;
@@ -17,6 +18,33 @@ bool Physics::RectColDetection(RECT RectA, RECT RectB) {
 
 void Physics::CircleCollisionResponse(D3DXVECTOR2 *circle1,D3DXVECTOR2 *circle2) {
     // Do something
+}
+
+void Physics::CollideWallResponse(D3DXVECTOR2* spaceshipPosition, int spriteWidth, int spriteHeight)
+{
+    if ((*spaceshipPosition).x < 0 || (*spaceshipPosition).x > WINDOW_WIDTH - spriteWidth)
+    {
+        if ((*spaceshipPosition).x < 0)
+        {
+            // GameObject::SetPositionX(0);
+        }
+        else
+        {
+            // GameObject::SetPositionX(windowWidth - GameObject::GetSpriteWidth());
+        }
+    }
+
+    if ((*spaceshipPosition).y < 0 || (*spaceshipPosition).y > WINDOW_HEIGHT - spriteHeight)
+    {
+        if ((*spaceshipPosition).y < 0)
+        {
+            // GameObject::SetPositionY(0);
+        }
+        else
+        {
+            // GameObject::SetPositionY(windowHeight - GameObject::GetSpriteHeight());
+        }
+    }
 }
 
 Physics::Physics() {
