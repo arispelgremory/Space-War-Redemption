@@ -66,55 +66,44 @@ void Line::InitBox(D3DXVECTOR2 topLeftPoint, D3DXVECTOR2 topRightPoint, D3DXVECT
     boxColRect.left = topLeftPoint.x;
     boxColRect.bottom = botRightPoint.y;
     boxColRect.right = botRightPoint.x;
-
-    this->topLeftPoint = topLeftPoint;
-    this->topRightPoint = topRightPoint;
-    this->botLeftPoint = botLeftPoint;
-    this->botRightPoint = botRightPoint;
 }
 
 void Line::DrawBox(D3DCOLOR colour)
 {
-    DrawALine(topLeftPoint, topRightPoint, colour);
+    /*DrawALine(topLeftPoint, topRightPoint, colour);
     DrawALine(topRightPoint, botRightPoint, colour);
     DrawALine(botLeftPoint, botRightPoint, colour);
-    DrawALine(topLeftPoint, botLeftPoint, colour);
+    DrawALine(topLeftPoint, botLeftPoint, colour);*/
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.top), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.top), colour);
 }
 
 void Line::DrawBox()
 {
-    DrawALine(topLeftPoint, topRightPoint, colour);
-    DrawALine(topRightPoint, botRightPoint, colour);
-    DrawALine(botLeftPoint, botRightPoint, colour);
-    DrawALine(topLeftPoint, botLeftPoint, colour);
-}
-
-void Line::BeginLineDraw()
-{
-    this->line->Begin();
-}
-
-void Line::EndLineDraw()
-{
-    this->line->End();
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.top), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.top), colour);
 }
 
 void Line::DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour)
 {
     D3DXVECTOR2 vertices[] = { startPoint, endPoint };
-    this->line->Draw(vertices, 2, colour);
+    line->Draw(vertices, 2, colour);
 }
 
 void Line::DrawALine(D3DCOLOR colour)
 {
     D3DXVECTOR2 vertices[] = { startPoint, endPoint };
-    this->line->Draw(vertices, 2, colour);
+    line->Draw(vertices, 2, colour);
 }
 
 void Line::DrawALine()
 {
     D3DXVECTOR2 vertices[] = { startPoint, endPoint };
-    this->line->Draw(vertices, 2, colour);
+    line->Draw(vertices, 2, colour);
 }
 
 void Line::CleanUpLine()
