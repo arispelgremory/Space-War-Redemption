@@ -60,7 +60,7 @@ void Sprite::InitSprite(int texWidth, int texHeight, int texCol, int texRow, D3D
 void Sprite::CreateTexture(IDirect3DDevice9* d3d9Device, LPCSTR texturePath)
 {
     HRESULT hr;
-    hr = D3DXCreateTextureFromFile(d3d9Device, texturePath, &texture);
+    hr = D3DXCreateTextureFromFile(d3d9Device, texturePath, &this->texture);
     if (FAILED(hr)) {
         cout << "Create Texture failed!" << endl;
         return;
@@ -69,17 +69,20 @@ void Sprite::CreateTexture(IDirect3DDevice9* d3d9Device, LPCSTR texturePath)
 
 void Sprite::Draw(LPD3DXSPRITE spriteBrush, D3DCOLOR colour)
 {
-    D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, rotation, &position);
-    spriteBrush->SetTransform(mat);
+    D3DXMATRIX mat;
+    D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, &spriteCenter, rotation, &position);
+    spriteBrush->SetTransform(&mat);
     spriteBrush->Draw(this->texture, &colRect, NULL, NULL, colour);
+    this->mat = &mat;
 }
 
 void Sprite::Draw(LPD3DXSPRITE spriteBrush)
 {
-    D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, rotation, &position);
-    spriteBrush->SetTransform(mat);
-    spriteBrush->Draw(this->texture, &colRect, NULL, NULL, colour);
-
+    D3DXMATRIX mat;
+    D3DXMatrixTransformation2D(&mat, NULL, 0.0, &this->scaling, &this->spriteCenter, this->rotation, &this->position);
+    spriteBrush->SetTransform(&mat);
+    spriteBrush->Draw(this->texture, &colRect, NULL, NULL, this->colour);
+    this->mat = &mat;
 }
 
 int Sprite::GetTextureWidth()

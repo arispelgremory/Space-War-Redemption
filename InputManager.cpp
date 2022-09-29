@@ -93,19 +93,33 @@ void InputManager::GetInput() {
     if (KEYDOWN(diKeys, DIK_UP)) {
         upButtonPressed = true;
     }
+    if (KEYDOWN(diKeys, DIK_LEFT)) {
+        leftButtonPressed = true;
+        cout << "Left Pressed!" << endl;
+    }
+    if (KEYDOWN(diKeys, DIK_RIGHT)) {
+        rightButtonPressed = true;
+        cout << "Right Pressed!" << endl;
+    }
+
     if (KEYDOWN(diKeys, DIK_RETURN)) {
         enterButtonPressed = true;
     }
 
 
-    if (KEYDOWN(diKeys, DIK_LEFT)) {
-        leftKeyPressed = true;
+    if (KEYDOWN(diKeys, DIK_W)) {
+        wButtonPressed = true;
         cout << "Left Pressed!" << endl;
     }
-
-    if (KEYDOWN(diKeys, DIK_RIGHT)) {
-        rightKeyPressed = true;
+    if (KEYDOWN(diKeys, DIK_S)) {
+        sButtonPressed = true;
         cout << "Right Pressed!" << endl;
+    }
+    if (KEYDOWN(diKeys, DIK_A)) {
+        aButtonPressed = true;
+    }
+    if (KEYDOWN(diKeys, DIK_D)) {
+        dButtonPressed = true;
     }
 
     if (mouseState.rgbButtons[0] & 0x80) //first mouse button
@@ -118,23 +132,6 @@ void InputManager::GetInput() {
     if (KEYDOWN(diKeys, DIK_BACKSPACE)) {
         backSpaceButtonPressed = true;
     }
-
-    if (KEYDOWN(diKeys, DIK_DOWN)) {
-        downButtonPressed = true;
-    }
-
-
-    if (KEYDOWN(diKeys, DIK_A)) {
-        aButtonPressed = true;
-    }
-
-
-    if (KEYDOWN(diKeys, DIK_D)) {
-        dButtonPressed = true;
-    }
-
-
-
 }
 
 
@@ -151,11 +148,11 @@ bool InputManager::GetEnterButtonPressed() const {
 }
 
 bool InputManager::GetLeftKeyPressed() const {
-    return leftKeyPressed;
+    return leftButtonPressed;
 }
 
 bool InputManager::GetRightKeyPressed() const {
-    return rightKeyPressed;
+    return rightButtonPressed;
 }
 
 bool InputManager::GetLeftMouseClicked() const {
@@ -174,6 +171,14 @@ bool InputManager::GetDButtonPressed() const {
     return dButtonPressed;
 }
 
+bool InputManager::GetSButtonPressed() const {
+    return sButtonPressed;
+}
+
+bool InputManager::GetWButtonPressed() const {
+    return wButtonPressed;
+}
+
 // Reset Input (Setters)
 void InputManager::ResetUpButton() {
     upButtonPressed = false;
@@ -187,11 +192,11 @@ void InputManager::ResetEnterButton() {
 }
 
 void InputManager::ResetLeftKey() {
-    leftKeyPressed = false;
+    leftButtonPressed = false;
 }
 
 void InputManager::ResetRightKey() {
-    rightKeyPressed = false;
+    rightButtonPressed = false;
 }
 
 void InputManager::ResetLeftMouseButton() {
@@ -215,10 +220,12 @@ void InputManager::ResetAllKeys()
     upButtonPressed = false;
     downButtonPressed = false;
     enterButtonPressed = false;
-    leftKeyPressed = false;
-    rightKeyPressed = false;
+    leftButtonPressed = false;
+    rightButtonPressed = false;
     leftMouseClicked = false;
     backSpaceButtonPressed = false;
+    wButtonPressed = false;
     aButtonPressed = false;
+    sButtonPressed = false;
     dButtonPressed = false;
 }

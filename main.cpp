@@ -3,6 +3,7 @@
 #define WIN32_LEAN_AND_MEAN // Only include the skinny(LEAN) and powerful(MEAN) part of Windows.h
 #include "GameConfiguration.h"
 #include "MainMenuScene.h"
+#include "SpaceshipScene.h"
 #include "Scenes.h"
 #include "Line.h"
 #include "Text.h"
@@ -20,6 +21,7 @@ vector<Scenes*> SCENES;
 
 void Initialize() {
     SCENES.push_back(new MainMenuScene());
+    SCENES.push_back(new SpaceshipScene());
     SCENES.back()->Initialize(deviceManager->GetD3D9Device());
     
 }
@@ -31,10 +33,12 @@ void Update(int FPS) {
 void Render() {
     deviceManager->BeginRender();
     deviceManager->BeginSpriteBrush();
+    lineObject->BeginLineDraw();
 
     // Draw Something here
     SCENES.back()->Render(deviceManager->GetSpriteBrush());
 
+    lineObject->EndLineDraw();
     deviceManager->EndSpriteBrush();
     deviceManager->SwapScene();
 }
@@ -75,11 +79,13 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     while (windowManager->IsRunning()) {
         inputManager->GetInput();
+        SCENES.back()->GetInput();
         cout << "Test 7" << endl;
         Update(timer->framesToUpdate());
         cout << "Test 8" << endl;
         Render();
         cout << "Test 9" << endl;
+        inputManager->ResetAllKeys();
     }
 
     // Clean up

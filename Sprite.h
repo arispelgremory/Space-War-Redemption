@@ -8,16 +8,16 @@ class Sprite
 private:
 	static Sprite* _instance;
 	LPDIRECT3DTEXTURE9 texture = NULL;
-	int textureWidth = 0;
-	int textureHeight = 0;
-	int textureRow = 0;
-	int textureCol = 0;
-	int spriteWidth = 0;
-	int spriteHeight = 0;
+	int textureWidth;
+	int textureHeight;
+	int textureRow;
+	int textureCol;
+	int spriteWidth;
+	int spriteHeight;
 
 
-	int frameCounter = 0;
-	int maxFrame = 0;
+	int frameCounter;
+	int maxFrame;
 
 	RECT animRect;
 	RECT colRect;

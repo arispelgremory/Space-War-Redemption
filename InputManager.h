@@ -35,6 +35,10 @@ public:
     bool GetAButtonPressed() const;
     bool GetDButtonPressed() const;
 
+    bool GetSButtonPressed() const;
+
+    bool GetWButtonPressed() const;
+
     // Reset Input (Setters)
     void ResetUpButton();
     void ResetDownButton();
@@ -66,8 +70,8 @@ private:
     // Player 1
     bool upButtonPressed;
     bool downButtonPressed;
-    bool leftKeyPressed;
-    bool rightKeyPressed;
+    bool leftButtonPressed;
+    bool rightButtonPressed;
 
     // Player 2
     bool wButtonPressed;

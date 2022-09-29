@@ -19,7 +19,7 @@ void GameOverScene::Initialize(IDirect3DDevice9* d3dDevice)
 	gameOverText = new Text(0, 0, WINDOW_WIDTH / 2, 200, 200, FW_BOLD, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
 
 	// Initialize retry Button
-	retryBox->InitBox(D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2());
+	retryBox->InitBox(D3DXVECTOR2(300, 350), D3DXVECTOR2(500, 350), D3DXVECTOR2(500, 400), D3DXVECTOR2(300, 400));
 	retryBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
 	retryText = new Text(retryBox->GetBoxColRect().top, retryBox->GetBoxColRect().right, retryBox->GetBoxColRect().left, retryBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
 	retryText->SetColour(D3DCOLOR_XRGB(255, 255, 255));

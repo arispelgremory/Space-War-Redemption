@@ -15,6 +15,9 @@ public:
 	void DrawBox(D3DCOLOR colour);
 	void DrawBox();
 
+	void BeginLineDraw();
+	void EndLineDraw();
+
 	void InitLine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour);
 	void InitLine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint);
 	void DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour);
@@ -37,6 +40,10 @@ private:
 	D3DCOLOR colour;
 	D3DXVECTOR2 startPoint;
 	D3DXVECTOR2 endPoint;
+	D3DXVECTOR2 topLeftPoint;
+	D3DXVECTOR2 topRightPoint;
+	D3DXVECTOR2 botLeftPoint;
+	D3DXVECTOR2 botRightPoint;
 	bool isFocus = false;
 };
 
