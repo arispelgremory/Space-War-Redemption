@@ -17,6 +17,7 @@ public:
 
      virtual void Line();*/
     virtual void Render(LPD3DXSPRITE spriteBrush);
+    virtual void RenderLine(LPD3DXSPRITE spriteBrush);
     virtual void Update();
     virtual void Clean();
 

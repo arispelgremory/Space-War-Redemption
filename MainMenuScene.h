@@ -24,6 +24,7 @@ public:
 	void GetInput() override;
 	void Update() override;
 	void Render(LPD3DXSPRITE spriteBrush) override;
+	void RenderLine(LPD3DXSPRITE spriteBrush) override;
 	void Clean() override;
 };
 

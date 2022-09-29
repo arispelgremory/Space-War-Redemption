@@ -24,5 +24,7 @@ public:
 	void Update();
 	void Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice);
 	void Clean();
+	void Render(LPD3DXSPRITE spriteBrush) override;
+	void RenderLine(LPD3DXSPRITE spriteBrush) override;
 };
 

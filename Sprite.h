@@ -25,7 +25,7 @@ private:
 	D3DCOLOR colour;
 
 	// Transformation
-	D3DXMATRIX* mat;
+	D3DXMATRIX mat;
 	D3DXVECTOR2 scaling;
 	D3DXVECTOR2 spriteCenter;
 	float rotation = 0.0f;

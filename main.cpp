@@ -19,18 +19,20 @@ InputManager* inputManager = new InputManager();
 FrameTimer* timer = new FrameTimer();
 vector<Scenes*> SCENES;
 
-void Initialize() {
+void Initialize()
+{
     SCENES.push_back(new MainMenuScene());
     //SCENES.push_back(new SpaceshipScene());
     SCENES.back()->Initialize(deviceManager->GetD3D9Device());
-    
 }
 
-void Update(int FPS) {
+void Update(int FPS)
+{
     SCENES.back()->Update();
 }
 
-void Render() {
+void Render()
+{
     deviceManager->BeginRender();
     deviceManager->BeginSpriteBrush();
     lineObject->BeginLineDraw();
@@ -40,11 +42,14 @@ void Render() {
 
     lineObject->EndLineDraw();
     deviceManager->EndSpriteBrush();
+
+    SCENES.back()->RenderLine(deviceManager->GetSpriteBrush());
     deviceManager->SwapScene();
 }
 
 //	use WinMain if you don't want the console
-int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+{
     /*
        HINSTANCE hInstance - ID Number
        HINSTANCE hPrevInstance - previous window
@@ -59,10 +64,10 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
     // Create D3D Devices
     deviceManager->CreateD3D9Device(windowManager->GetWindowHandle());
     cout << "Test 1" << endl;
-    
+
     lineObject->InitLineObject(deviceManager->GetD3D9Device());
     cout << "Test 2" << endl;
-    
+
     textObject->InitTextObject(deviceManager->GetD3D9Device());
     cout << "Test 3" << endl;
 
@@ -77,7 +82,8 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
     Initialize();
     cout << "Test 6" << endl;
 
-    while (windowManager->IsRunning()) {
+    while (windowManager->IsRunning())
+    {
         inputManager->GetInput();
         //SCENES.back()->GetInput();
         cout << "Test 7" << endl;
@@ -98,4 +104,3 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     return 0;
 }
-
