@@ -76,16 +76,16 @@ void Line::DrawBox(D3DCOLOR colour)
     DrawALine(topLeftPoint, botLeftPoint, colour);*/
     DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.top), colour);
     DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
-    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.right), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
-    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.left, boxColRect.right), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.top), colour);
 }
 
 void Line::DrawBox()
 {
     DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.top), colour);
     DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.top), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
-    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.right), D3DXVECTOR2(boxColRect.right, boxColRect.bottom), colour);
-    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.top), D3DXVECTOR2(boxColRect.left, boxColRect.right), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.right, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.bottom), colour);
+    DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.top), colour);
 }
 
 void Line::DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour)

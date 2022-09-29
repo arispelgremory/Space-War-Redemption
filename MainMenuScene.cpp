@@ -17,7 +17,6 @@ void MainMenuScene::Initialize(IDirect3DDevice9* d3dDevice)
 	bg->CreateTexture(d3dDevice, BG_FILEPATH);
 	cout << "Test 6.2" << endl;
 
-	
 	// Initialize Game Title
 	//Text(int top, int right, int left, int bottom, INT fontHeight, UINT fontWeight, D3DXVECTOR2 position, D3DXVECTOR2 scaling)
 	mainTitle = new Text(0, 0, WINDOW_WIDTH / 2, 200, 200, FW_BOLD, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
@@ -25,20 +24,20 @@ void MainMenuScene::Initialize(IDirect3DDevice9* d3dDevice)
 	cout << "Test 6.3" << endl;
 	
 	// Initialize Play Button
-	playBox->InitBox(D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2());
+	playBox->InitBox(D3DXVECTOR2(150, 170), D3DXVECTOR2(600, 170), D3DXVECTOR2(600, 300), D3DXVECTOR2(150, 300));
 	cout << "Test 6.4" << endl;
 	playBox->InitLineObject(d3dDevice);
-	playBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
+	playBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
 	playText = new Text(playBox->GetBoxColRect().top, playBox->GetBoxColRect().right, playBox->GetBoxColRect().left, playBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
 	playText->InitTextObject(d3dDevice);
 	playText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
 	// Initialize Exit Button
-	exitBox->InitBox(D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2());
+	exitBox->InitBox(D3DXVECTOR2(150, 350), D3DXVECTOR2(600, 350), D3DXVECTOR2(600, 480), D3DXVECTOR2(150, 480));
 	exitBox->InitLineObject(d3dDevice);
-	exitBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
-	exitText = new Text(exitBox->GetBoxColRect().top, exitBox->GetBoxColRect().right, exitBox->GetBoxColRect().left, exitBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
+	exitBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));
+	exitText = new Text(exitBox->GetBoxColRect().top, exitBox->GetBoxColRect().right, exitBox->GetBoxColRect().left, exitBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(150, 350), D3DXVECTOR2(1.0f, 1.0f));
 	exitText->InitTextObject(d3dDevice);
 	exitText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
