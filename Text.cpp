@@ -47,21 +47,27 @@ void Text::SetFontWeight(UINT fontWeight)
 
 void Text::DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format, D3DCOLOR colour)
 {
+	D3DXMATRIX mat;
+	cout << "Test 8.1.1" << endl;
 	D3DXVECTOR2 spriteCenter = D3DXVECTOR2(textRect.right - textRect.left, textRect.bottom - textRect.top);
-
-	D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, NULL, &position);
-	spriteBrush->SetTransform(mat);
-
+	cout << "Test 8.1.2" << endl;
+	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, &spriteCenter, NULL, &position);
+	cout << "Test 8.1.3" << endl;
+	spriteBrush->SetTransform(&mat);
+	cout << "Test 8.1.4" << endl;
+	// this->font = new LPD3DXFONT();
 	font->DrawText(spriteBrush, text, count, &textRect, format, colour);
+	cout << "Test 8.1.5" << endl;
 }
 
 
 void Text::DrawOutText(LPD3DXSPRITE spriteBrush, LPCTSTR text, int count, UINT format)
 {
+	D3DXMATRIX mat;
 	D3DXVECTOR2 spriteCenter = D3DXVECTOR2(textRect.right - textRect.left, textRect.bottom - textRect.top);
 
-	D3DXMatrixTransformation2D(mat, NULL, 0.0, &scaling, &spriteCenter, NULL, &position);
-	spriteBrush->SetTransform(mat);
+	D3DXMatrixTransformation2D(&mat, NULL, 0.0, &scaling, &spriteCenter, NULL, &position);
+	spriteBrush->SetTransform(&mat);
 
 	font->DrawText(spriteBrush, text, count, &textRect, format, colour);
 }

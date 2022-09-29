@@ -13,28 +13,35 @@ void MainMenuScene::Initialize(IDirect3DDevice9* d3dDevice)
 {
 	// Initialize background image
 	bg = new Sprite(BG_DIMENSION, BG_DIMENSION, BG_SPRITEWIDTH, BG_SPRITEHEIGHT, D3DXVECTOR2(1.0f, 1.0f), NULL, D3DXVECTOR2(0, 0));
-	cout << "Test 8.1" << endl;
+	cout << "Test 6.1" << endl;
 	bg->CreateTexture(d3dDevice, BG_FILEPATH);
-	cout << "Test 8.2" << endl;
+	cout << "Test 6.2" << endl;
+
 	
 	// Initialize Game Title
 	//Text(int top, int right, int left, int bottom, INT fontHeight, UINT fontWeight, D3DXVECTOR2 position, D3DXVECTOR2 scaling)
 	mainTitle = new Text(0, 0, WINDOW_WIDTH / 2, 200, 200, FW_BOLD, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
-	cout << "Test 8.3" << endl;
+	mainTitle->InitTextObject(d3dDevice);
+	cout << "Test 6.3" << endl;
 	
 	// Initialize Play Button
 	playBox->InitBox(D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2());
-	cout << "Test 8.4" << endl;
+	cout << "Test 6.4" << endl;
+	playBox->InitLineObject(d3dDevice);
 	playBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
 
 	playText = new Text(playBox->GetBoxColRect().top, playBox->GetBoxColRect().right, playBox->GetBoxColRect().left, playBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
+	playText->InitTextObject(d3dDevice);
 	playText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
 	// Initialize Exit Button
 	exitBox->InitBox(D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2(), D3DXVECTOR2());
+	exitBox->InitLineObject(d3dDevice);
 	exitBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
 	exitText = new Text(exitBox->GetBoxColRect().top, exitBox->GetBoxColRect().right, exitBox->GetBoxColRect().left, exitBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
+	exitText->InitTextObject(d3dDevice);
 	exitText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
+
 }
 
 void MainMenuScene::GetInput()
@@ -86,6 +93,7 @@ void MainMenuScene::Update()
 
 void MainMenuScene::Render(LPD3DXSPRITE spriteBrush)
 {
+	cout << "Test 8.0" << endl;
 	mainTitle->DrawOutText(spriteBrush, "Space War Redemption", 20, DT_CENTER, D3DCOLOR_XRGB(255, 255, 255));
 	cout << "Test 8.1" << endl;
 

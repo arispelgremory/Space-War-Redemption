@@ -71,6 +71,7 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     // initialize game level
     Initialize();
+    cout << "Test 6" << endl;
 
     while (windowManager->IsRunning()) {
         inputManager->GetInput();
