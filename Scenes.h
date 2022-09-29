@@ -16,7 +16,7 @@ public:
      virtual void Font(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice);
 
      virtual void Line();*/
-    virtual void Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice);
+    virtual void Render(LPD3DXSPRITE spriteBrush);
     virtual void Update();
     virtual void Clean();
 

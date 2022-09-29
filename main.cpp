@@ -33,7 +33,7 @@ void Render() {
     deviceManager->BeginSpriteBrush();
 
     // Draw Something here
-    SCENES.back()->Render(deviceManager->GetSpriteBrush(), deviceManager->GetD3D9Device());
+    SCENES.back()->Render(deviceManager->GetSpriteBrush());
 
     deviceManager->EndSpriteBrush();
     deviceManager->SwapScene();

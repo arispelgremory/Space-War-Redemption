@@ -84,15 +84,20 @@ void MainMenuScene::Update()
 		PostQuitMessage(0);
 }
 
-void MainMenuScene::Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice)
+void MainMenuScene::Render(LPD3DXSPRITE spriteBrush)
 {
 	mainTitle->DrawOutText(spriteBrush, "Space War Redemption", 20, DT_CENTER, D3DCOLOR_XRGB(255, 255, 255));
+	cout << "Test 8.1" << endl;
 
 	playBox->DrawBox();
+	cout << "Test 8.2" << endl;
 	playText->DrawOutText(spriteBrush, "PLAY", 4, DT_CENTER);
-
+	cout << "Test 8.3" << endl;
+	
 	exitBox->DrawBox();
+	cout << "Test 8.4" << endl;
 	exitText->DrawOutText(spriteBrush, "EXIT", 4, DT_CENTER);
+	cout << "Test 8.5" << endl;
 }
 
 void MainMenuScene::Clean()

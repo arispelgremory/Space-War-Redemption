@@ -23,7 +23,7 @@ public:
 	void Initialize(IDirect3DDevice9* d3dDevice) override;
 	void GetInput() override;
 	void Update() override;
-	void Render(LPD3DXSPRITE spriteBrush, IDirect3DDevice9* d3dDevice) override;
+	void Render(LPD3DXSPRITE spriteBrush) override;
 	void Clean() override;
 };
 
