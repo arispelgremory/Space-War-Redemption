@@ -16,7 +16,7 @@ class Physics {
 
         static void CircleCollisionResponse(D3DXVECTOR2* circle1Acceleration, D3DXVECTOR2 *circle2Acceleration);
 
-        static void CollideWallResponse(D3DXVECTOR2* spaceshipPosition, int spriteWidth, int windowWidth, int windowHeight);
+        static void CollideWallResponse(D3DXVECTOR2* spaceshipPosition, int spriteWidth, int spriteHeight);
     
         D3DXVECTOR2 GetVelocity() const;
         float GetXVelocity() const;
