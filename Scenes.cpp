@@ -29,6 +29,10 @@ void Scenes::Render(LPD3DXSPRITE spriteBrush)
 {
 }
 
+void Scenes::RenderLine(LPD3DXSPRITE spriteBrush)
+{
+}
+
 void Scenes::Update()
 {
     

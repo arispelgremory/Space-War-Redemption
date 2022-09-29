@@ -100,3 +100,13 @@ void GameOverScene::Clean()
 	exitText->CleanUpText();
 	exitBox->CleanUpLine();
 }
+
+void GameOverScene::Render(LPD3DXSPRITE spriteBrush)
+{
+	Scenes::Render(spriteBrush);
+}
+
+void GameOverScene::RenderLine(LPD3DXSPRITE spriteBrush)
+{
+	Scenes::RenderLine(spriteBrush);
+}
