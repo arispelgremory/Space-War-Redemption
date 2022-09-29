@@ -29,7 +29,7 @@ void MainMenuScene::Initialize(IDirect3DDevice9* d3dDevice)
 	playBox->InitLineObject(d3dDevice);
 	playBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
-	playText = new Text(playBox->GetBoxColRect().top, playBox->GetBoxColRect().right, playBox->GetBoxColRect().left, playBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(), D3DXVECTOR2(1.0f, 1.0f));
+	playText = new Text(playBox->GetBoxColRect().top, playBox->GetBoxColRect().right, playBox->GetBoxColRect().left, playBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(0,0), D3DXVECTOR2(1.0f, 1.0f));
 	playText->InitTextObject(d3dDevice);
 	playText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
@@ -37,7 +37,7 @@ void MainMenuScene::Initialize(IDirect3DDevice9* d3dDevice)
 	exitBox->InitBox(D3DXVECTOR2(150, 350), D3DXVECTOR2(600, 350), D3DXVECTOR2(600, 480), D3DXVECTOR2(150, 480));
 	exitBox->InitLineObject(d3dDevice);
 	exitBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));
-	exitText = new Text(exitBox->GetBoxColRect().top, exitBox->GetBoxColRect().right, exitBox->GetBoxColRect().left, exitBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(150, 350), D3DXVECTOR2(1.0f, 1.0f));
+	exitText = new Text(exitBox->GetBoxColRect().top, exitBox->GetBoxColRect().right, exitBox->GetBoxColRect().left, exitBox->GetBoxColRect().bottom, 100, FW_NORMAL, D3DXVECTOR2(0,0), D3DXVECTOR2(1.0f, 1.0f));
 	exitText->InitTextObject(d3dDevice);
 	exitText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
@@ -67,19 +67,19 @@ void MainMenuScene::Update()
 	if (exitBox->GetIsFocus())
 	{
 		playBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));
-		playText->SetColour(D3DCOLOR_XRGB(0, 0, 0));
+		playText->SetColour(D3DCOLOR_XRGB(255, 0, 0));
 
-		exitBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
+		exitBox->SetColour(D3DCOLOR_XRGB(255, 0, 0));
 		exitText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 	}
 
 	if (playBox->GetIsFocus())
 	{
-		playBox->SetColour(D3DCOLOR_XRGB(0, 0, 0));
+		playBox->SetColour(D3DCOLOR_XRGB(255, 0, 0));
 		playText->SetColour(D3DCOLOR_XRGB(255, 255, 255));
 
 		exitBox->SetColour(D3DCOLOR_XRGB(255, 255, 255));
-		exitText->SetColour(D3DCOLOR_XRGB(0, 0, 0));
+		exitText->SetColour(D3DCOLOR_XRGB(255, 0, 0));
 	}
 
 	if (exitBox->GetIsFocus() && buttonClicked)
@@ -92,6 +92,8 @@ void MainMenuScene::Update()
 
 void MainMenuScene::Render(LPD3DXSPRITE spriteBrush)
 {
+	bg->Draw(spriteBrush, D3DCOLOR_XRGB(150,150,150));
+
 	cout << "Test 8.0" << endl;
 	mainTitle->DrawOutText(spriteBrush, "Space War Redemption", 20, DT_CENTER, D3DCOLOR_XRGB(255, 255, 255));
 	cout << "Test 8.1" << endl;

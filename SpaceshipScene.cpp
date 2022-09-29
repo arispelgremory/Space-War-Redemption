@@ -28,9 +28,9 @@ void SpaceshipScene::Initialize(IDirect3DDevice9* d3dDevice)
 	player2->Init(d3dDevice, 700, 300);
 
 	// Initialized scoreboard
-	player1HP->InitText(0, 0, 100, 50, 40, FW_NORMAL, D3DXVECTOR2(50.0f, 5.0f), D3DXVECTOR2(1.0f, 1.0f));
-	player2HP->InitText(0, 0, 100, 50, 40, FW_NORMAL, D3DXVECTOR2(700.0f, 5.0f), D3DXVECTOR2(1.0f, 1.0f));
-	line->InitLine(D3DXVECTOR2(0.0f, 50.0f), D3DXVECTOR2(WINDOW_WIDTH, 50.0f), D3DCOLOR_XRGB(255, 255, 255));
+	player1HP->InitText(5, 5, 100, 20, 20, FW_NORMAL, D3DXVECTOR2(50.0f, 5.0f), D3DXVECTOR2(1.0f, 1.0f));
+	player2HP->InitText(5, 5, 100, 20, 20, FW_NORMAL, D3DXVECTOR2(700.0f, 5.0f), D3DXVECTOR2(1.0f, 1.0f));
+	line->InitLine(D3DXVECTOR2(0.0f, 30.0f), D3DXVECTOR2(WINDOW_WIDTH, 30.0f), D3DCOLOR_XRGB(255, 255, 255));
 }
 
 void SpaceshipScene::GetInput()

@@ -21,7 +21,7 @@ vector<Scenes*> SCENES;
 
 void Initialize() {
     SCENES.push_back(new MainMenuScene());
-    SCENES.push_back(new SpaceshipScene());
+    //SCENES.push_back(new SpaceshipScene());
     SCENES.back()->Initialize(deviceManager->GetD3D9Device());
     
 }
@@ -79,7 +79,7 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nSho
 
     while (windowManager->IsRunning()) {
         inputManager->GetInput();
-        SCENES.back()->GetInput();
+        //SCENES.back()->GetInput();
         cout << "Test 7" << endl;
         Update(timer->framesToUpdate());
         cout << "Test 8" << endl;

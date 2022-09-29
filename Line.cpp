@@ -88,6 +88,16 @@ void Line::DrawBox()
     DrawALine(D3DXVECTOR2(boxColRect.left, boxColRect.bottom), D3DXVECTOR2(boxColRect.left, boxColRect.top), colour);
 }
 
+void Line::BeginLineDraw()
+{
+    line->Begin();
+}
+
+void Line::EndLineDraw()
+{
+    line->End();
+}
+
 void Line::DrawALine(D3DXVECTOR2 startPoint, D3DXVECTOR2 endPoint, D3DCOLOR colour)
 {
     D3DXVECTOR2 vertices[] = { startPoint, endPoint };
